@@ -46,10 +46,6 @@
             {
                 "title": "Ważne",
                 "text": "Kiedy złożyć zeznanie w ciągu 14. dni (PCC-3).\nJakiej stawki użyć 2 %.\nJak złożyć zeznanie e-Deklaracje Wybierz Papierowo Wybierz.\n"
-            },
-            {
-                "title": "podatki.gov.pl",
-                "text": ""
             }
         ]
     },
@@ -96,10 +92,6 @@
             {
                 "title": "Ważne",
                 "text": "Kiedy złożyć zeznanie w ciągu 14. dni (PCC-3).\nJakiej stawki użyć 0,5 %.\nJak złożyć zeznanie e-Deklaracje Wybierz Papierowo Wybierz.\n"
-            },
-            {
-                "title": "podatki.gov.pl",
-                "text": ""
             }
         ]
     },
@@ -150,10 +142,6 @@
             {
                 "title": "Ważne",
                 "text": "Kiedy złożyć zeznanie w ciągu 14. dni (PCC-3).\nJakiej stawki użyć 2 % , 1% , 0,5 %.\nJak złożyć zeznanie e-Deklaracje Wybierz Papierowo Wybierz.\n"
-            },
-            {
-                "title": "podatki.gov.pl",
-                "text": ""
             }
         ]
     },
@@ -192,10 +180,6 @@
             {
                 "title": "Podstawa prawna",
                 "text": "Ustawa z dnia 28 lipca 1983 r. o podatku od spadków i darowizn Rozporządzenie Ministra Finansów z dnia 20 listopada 2015 r. w sprawie wzoru zgłoszenia o nabyciu własności rzeczy lub praw majątkowych Rozporządzenie Ministra Finansów z dnia 27 listopada 2015 r. w sprawie zeznania podatkowego składanego przez podatników podatku od spadków i darowizn Rozporządzenie Ministra Finansów z dnia 22 sierpnia 2005 r. w sprawie właściwości organów podatkowych.\n"
-            },
-            {
-                "title": "podatki.gov.pl",
-                "text": ""
             }
         ]
     },
@@ -234,10 +218,6 @@
             {
                 "title": "Podstawa prawna",
                 "text": "Ustawa z dnia 28 lipca 1983 r. o podatku od spadków i darowizn Rozporządzenie Ministra Finansów z dnia 20 listopada 2015 r. w sprawie wzoru zgłoszenia o nabyciu własności rzeczy lub praw majątkowych Rozporządzenie Ministra Finansów z dnia 27 listopada 2015 r. w sprawie zeznania podatkowego składanego przez podatników podatku od spadków i darowizn Rozporządzenie Ministra Finansów z dnia 22 sierpnia 2005 r. w sprawie właściwości organów podatkowych.\n"
-            },
-            {
-                "title": "podatki.gov.pl",
-                "text": ""
             }
         ]
     },
@@ -276,10 +256,82 @@
             {
                 "title": "Podstawa prawna",
                 "text": "Ustawa z dnia 28 lipca 1983 r. o podatku od spadków i darowizn Rozporządzenie Ministra Finansów z dnia 20 listopada 2015 r. w sprawie wzoru zgłoszenia o nabyciu własności rzeczy lub praw majątkowych Rozporządzenie Ministra Finansów z dnia 27 listopada 2015 r. w sprawie zeznania podatkowego składanego przez podatników podatku od spadków i darowizn Rozporządzenie Ministra Finansów z dnia 22 sierpnia 2005 r. w sprawie właściwości organów podatkowych.\n"
+            }
+        ]
+    },
+    {
+        "caseTitle": "Podatek od nieruchomości",
+        "chunks":
+        [
+            {
+                "title": "Co jest opodatkowane",
+                "text": "grunty, budynki lub ich części, budowle lub ich części związane z prowadzeniem działalności gospodarczej.\n"
             },
             {
-                "title": "podatki.gov.pl",
-                "text": ""
+                "title": "Kto płaci podatek",
+                "text": "właściciele, użytkownicy wieczyści, samoistni posiadacze, w niektórych przypadkach – posiadacze zależni nieruchomości lub ich części stanowiących własność Skarbu Państwa lub jednostki samorządu terytorialnego.\n"
+            },
+            {
+                "title": "Kiedy powstaje i wygasa obowiązek podatkowy",
+                "text": "Obowiązek podatkowy powstaje z pierwszym dniem miesiąca następującego po miesiącu, w którym nastąpiło zdarzenie powodujące władanie nieruchomością lub jej składnikami (które wynika z prawa własności, samoistnego posiadania, wieczystego użytkowania czy posiadania zależnego). Jeżeli obowiązek podatkowy ma związek z istnieniem budowli albo budynku lub ich części, to powstaje 1 stycznia roku następującego po roku, w którym budowa została zakończona albo w którym rozpoczęto użytkowanie budowli albo budynku lub ich części przed ich ostatecznym wykończeniem.\nObowiązek podatkowy wygasa z upływem miesiąca, w którym ustały okoliczności uzasadniające ten obowiązek.\n"
+            },
+            {
+                "title": "Czynności i dokumenty",
+                "text": "Podatnicy podatku od nieruchomości składają informacje lub deklaracje do wójta (burmistrza, prezydenta miasta), właściwego ze względu na miejsce położenia przedmiotów opodatkowania (tj. gruntów, budynków itp.). Wzory formularzy określa rozporządzenie Ministra Finansów.\nJeżeli nieruchomość lub obiekt budowlany stanowi współwłasność (lub znajduje się w posiadaniu) jednocześnie osoby fizycznej oraz osoby prawnej bądź jednostki organizacyjnej (w tym spółki), która nie posiada osobowości prawnej, wówczas osoba fizyczna składa deklarację na podatek od nieruchomości oraz opłaca podatek na zasadach obowiązujących osoby prawne. W tym przypadku osoba fizyczna nie otrzymuje decyzji o wysokości podatku.\nObowiązek składania informacji o nieruchomościach i obiektach budowlanych oraz deklaracji na podatek od nieruchomości dotyczy również podatników, którzy korzystają ze zwolnień na podstawie ustawy o podatkach i opłatach lokalnych (zarówno ustawowych, jak i wprowadzonych uchwałą rady gminy):.\n"
+            },
+            {
+                "title": "Stawki podatku",
+                "text": "Wysokość stawek podatku określa uchwała rada gminy. Uwzględnia ona górne granice stawek, które wynikają z ustawy o podatkach i opłatach lokalnych [1].\n"
+            },
+            {
+                "title": "Zwolnienia od podatku od nieruchomości",
+                "text": "Obejmują one m.in.[2]:.\nbudynki gospodarcze lub ich części: służące działalności leśnej lub rybackiej, położone na gruntach gospodarstw rolnych, służące wyłącznie działalności rolniczej, zajęte na prowadzenie działów specjalnych produkcji rolnej, grunty i budynki wpisane indywidualnie do rejestru zabytków, pod warunkiem ich utrzymania i konserwacji, zgodnie z przepisami o ochronie zabytków – z wyjątkiem części zajętych na prowadzenie działalności gospodarczej, grunty, budynki lub ich części zajęte wyłącznie na potrzeby prowadzenia przez stowarzyszenia statutowej działalności wśród dzieci i młodzieży w zakresie oświaty, wychowania, nauki i techniki, kultury fizycznej i sportu, z wyjątkiem wykorzystywanych do prowadzenia działalności gospodarczej, oraz grunty zajęte trwale na obozowiska i bazy wypoczynkowe dzieci i młodzieży, grunty położone na obszarach objętych ochroną ścisłą, czynną lub krajobrazową, a także budynki i budowle trwale związane z gruntem, które znajdują się w parkach narodowych lub rezerwatach przyrody i służą bezpośrednio i wyłącznie osiąganiu celów związanych z ochroną przyrody, grunty stanowiące nieużytki, użytki ekologiczne, grunty zadrzewione i zakrzewione – z wyjątkiem zajętych na prowadzenie działalności gospodarczej, położone na terenie rodzinnego ogrodu działkowego: grunty, altany działkowe i obiekty gospodarcze o powierzchni zabudowy do 35 m2 oraz budynki, które stanowią infrastrukturę ogrodową, w rozumieniu ustawy o rodzinnych ogrodach działkowych – z wyjątkiem zajętych na prowadzenie działalności gospodarczej, nieruchomości lub ich części zajęte na prowadzenie nieodpłatnej statutowej działalności pożytku publicznego przez organizacje pożytku publicznego, uczelnie i instytuty badawcze (zwolnienie nie dotyczy gruntów, budynków itp. lub ich części zajętych na działalność gospodarczą), publiczne i niepubliczne jednostki organizacyjne objęte systemem oświaty oraz prowadzące je organy, w zakresie nieruchomości zajętych na działalność oświatową, żłobki i kluby dziecięce oraz prowadzące je podmioty, w zakresie nieruchomości zajętych na prowadzenie żłobka lub klubu dziecięcego, prowadzących zakłady pracy chronionej lub zakłady aktywności zawodowej, na warunkach określonych w ustawie o podatkach i opłatach lokalnych, przedsiębiorców o statusie centrum badawczo-rozwojowego, uzyskanym na zasadach określonych w przepisach o niektórych formach wspierania działalności innowacyjnej, w odniesieniu do przedmiotów opodatkowania (np. gruntów, budynków itp.), które zajęto na cele prowadzonych badań i prac rozwojowych.\n"
+            },
+            {
+                "title": "Pozostałe zwolnienia",
+                "text": "Rada gminy może wprowadzić również inne niż wymienione w ustawie o podatkach i opłatach lokalnych zwolnienia przedmiotowe.\nIstnieją też zwolnienia i ulgi, które są uregulowane w odrębnych przepisach. Dotyczą one kościołów i związków wyznaniowych, prowadzących działalność gospodarczą na terenie specjalnych stref ekonomicznych [3], gruntów i budynków wchodzących w skład nieruchomości przeznaczonych na budowę dróg publicznych, nabytych odpowiednio na własność lub w trwały zarząd:.\nSkarbu Państwa oraz przekazanych Generalnej Dyrekcji Dróg Krajowych i Autostrad, jednostek samorządu terytorialnego [4].\n"
+            },
+            {
+                "title": "Kiedy i jak płaci się podatek",
+                "text": "Podatek płacą:.\nosoby fizyczne: w 4 ratach proporcjonalnych do czasu trwania obowiązku podatkowego – do 15 marca, 15 maja, 15 września i 15 listopada roku podatkowego, osoby prawne i jednostki organizacyjne niemające osobowości prawnej, w tym spółki nieposiadające osobowości prawnej: za poszczególne miesiące w ratach proporcjonalnych do czasu trwania obowiązku podatkowego – do 15. dnia każdego miesiąca, a za styczeń do 31 stycznia.\nW przypadku gdy kwota podatku nie przekracza 100 zł, płaci się go jednorazowo w terminie płatności pierwszej raty.\n"
+            },
+            {
+                "title": "Podstawa prawna",
+                "text": "Ustawa z dnia 12 stycznia 1991 r. o podatkach i opłatach lokalnych (Dz. U. z 2023 r. poz. 70).\n"
+            }
+        ]
+    },
+    {
+        "caseTitle": "Podatek od posiadania psów",
+        "chunks":
+        [
+            {
+                "title": "Kto płaci za posiadanie psa",
+                "text": "Każdy, kto ma psa i mieszka w gminie, która ustaliła taką opłatę. Sprawdź na stronie internetowej gminy, czy masz zapłacić.\nJeśli w twojej gminie jest opłata za psa – masz obowiązek zapłacić.\n"
+            },
+            {
+                "title": "Kiedy NIE płacisz za posiadanie psa",
+                "text": "Nie płacisz za 1 psa – jeśli masz:.\norzeczenie o dowolnym stopniu niepełnosprawności, a twój pies jest psem asystującym, orzeczenie o znacznym stopniu niepełnosprawności, więcej niż 65 lat i samodzielnie prowadzisz gospodarstwo domowe.\nJeśli masz więcej psów i spełniasz te warunki – zapłacisz za drugiego i każdego kolejnego psa.\n"
+            },
+            {
+                "title": "Co zrobić",
+                "text": "Sprawdź, czy w twojej gminie jest ustalona opłata za posiadanie psa. Zapłać w odpowiednim terminie. Szczegóły znajdziesz w sekcjach: Kiedy zapłacisz, Ile zapłacisz, Jak zapłacisz.\n"
+            },
+            {
+                "title": "Kiedy zapłacisz",
+                "text": "Płacisz co roku. O dokładnym terminie decyduje gmina. Obowiązujący cię termin znajdziesz na stronie internetowej gminy.\n"
+            },
+            {
+                "title": "Ile zapłacisz",
+                "text": "Do 173,57 zł za jednego psa (opłata w 2024 r.).\nKażda gmina sama ustala wysokość opłaty, na przykład zależnie od wielkości i rasy psa. Dlatego o dokładną kwotę zapytaj w swoim urzędzie gminy.\n"
+            },
+            {
+                "title": "Jak zapłacisz",
+                "text": "w kasie gminy, przelewem na jej konto, u osoby, którą wyznaczyła gmina (inkasenta).\n"
+            },
+            {
+                "title": "Podstawa prawna",
+                "text": "Art. 18a i art. 19 ustawy z dnia 12 stycznia 1991 r. o podatkach i opłatach lokalnych (Dz. U. z 2023 r. poz. 70).\n"
             }
         ]
     }
