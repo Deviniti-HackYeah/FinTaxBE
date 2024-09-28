@@ -90,7 +90,7 @@ class SituationVerificationResult(BaseModel):
 
 SYSTEM = """
 Twoim zadaniem jest odpowiedzenie czy użytkownik z potrzebą jaką ma może wypełnić poniższy dokument (PCC-3)
-Jeśli ktoś mówi na inny temat to odpowiedź ma być false. True tylko jak przypadek wchodzi w opis.
+Jeśli ktoś mówi na inny temat to odpowiedź ma być false, jakieś głupie zapytanie itp... True tylko jak przypadek wchodzi w opis.
 
 To jest opis do składania deklaracji PCC-3
 
