@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from hackyeah_2024_ad_deviniti.pcc_renderer.PccRenderer import PccRenderer
+from fastapi.responses import HTMLResponse
 
 from hackyeah_2024_ad_deviniti.presentation.dto import (
     QuestionResponseDto,
@@ -48,3 +50,8 @@ async def chat_interaction_sample(session_id: str) -> QuestionResponseDto:
         sources=[],
         extras=None,
     )
+
+@app.get("/pcc3.html", response_class=HTMLResponse)
+async def pcc3(data: str, kod_urzedu: str, pesel: str) -> str:
+    renderer = PccRenderer()
+    return renderer.render(data, kod_urzedu, pesel)

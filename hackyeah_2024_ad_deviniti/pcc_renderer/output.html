@@ -1,0 +1,1234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <head>
+    <title>DEKLARACJA W SPRAWIE PODATKU OD CZYNNO&#346;CI CYWILNOPRAWNYCH</title>
+    <style type="text/css">
+body {
+	background-color: #FFFFFF;
+	color: #000000;
+	font-family: 'Arial', sans-serif;
+	font-size: 11pt;
+	margin: 0;
+	padding: 1px 5%;
+}
+
+div.body {
+	width: 100%;
+	min-width: 480px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.deklaracja, div.zalacznik {
+	margin: 2em 0;
+}
+
+.tlo-zalacznika {
+	background-color: #FFFFDD;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+.normalna, .tytul-sekcja-blok {
+	width: 100%;
+}
+
+.naglowek {
+	background-color: #CCDDFF;
+}
+
+.kod-formularza {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.naglowek .wartosc {
+	font-weight: bold;	
+}
+
+.tytul {
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+}
+
+.tytulformularza {
+	font-size: xx-large;
+	font-weight: bold;
+	text-align: center;
+}
+
+.okres {
+	display: block;
+	margin: 1em;
+	font-size: 1.2em;
+	text-align: center;
+	vertical-align: top;
+	clear: both; 
+}
+
+.data {
+	border: 1px solid black; 
+	padding: 2px 1.5em;
+	background-color: white;
+	font-weight: bold;
+	margin: 0 2em; 
+}
+
+.obok-daty {
+	text-align: right;
+	display: inline-block;
+	width: 45%;
+}
+
+.objasnienie {
+	border: 2px solid black;
+	padding: 0.25em 0.5em; 
+	font-size: 0.8em; 
+}
+
+.zalacznik-objasnienie {
+	background-color: #DDDDDD;	
+	border: 2px solid black;
+	font-size: 0.8em;
+	width:99.5%;
+}
+
+.prawne {
+	background-color: #DDDDDD;	
+	border: 2px solid black; 
+	font-size: 0.8em;
+}
+
+.prawne .etykieta {
+	min-width: 9em;
+}
+
+.wypelniane {
+	background-color: white;
+}
+
+.niewypelniane, .ukryte {
+	background-color: #DDDDDD;
+}
+
+.pouczenia td {
+	background-color: white;
+	border: 2px solid black;
+}
+
+.tytul-sekcja-blok {
+	background-color: #DDDDFF;
+	border: 2px solid black;
+	text-transform: uppercase;
+	width: auto;
+}
+
+
+h1 {
+	font-size: 1.4em;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+h2 {
+	text-align: left;
+	font-size: 1.2em;
+	font-weight: bold; 
+}
+
+h3 {
+	text-align: left;
+	font-size: 1.2em;
+	font-weight: normal;
+}
+
+h4 {
+	text-align: left;
+	font-size: 1em;
+	font-weight: normal;
+}
+
+h1, h2, h3, h4 {
+	font-family: 'Arial', sans-serif;
+	margin: 0;
+	padding: 1px;
+}
+
+.wypelniane {
+	border: 1px solid black; 
+	font-size: 1.2em;
+	padding: 1px; 
+	vertical-align: top;	
+	text-align: left;
+}
+
+	
+.puste {
+	background-color: #DDDDDD;
+	border: 1px solid black; 
+	font-size: 0.8em;
+	padding: 1px; 
+	height: 2em;
+	vertical-align: top;
+}
+
+.puste2 {
+	background-color: #DDDDDD;
+	border: 1px solid black; 
+	 font-size: 1.2em;
+	padding: 1px; 
+	height: 2em;
+	text-align: center;
+}
+
+.niewypelnianeopisy {
+	background-color: #DDDDDD;
+	border: 1px solid black;
+	font-size: 0.8em;
+	padding: 1px; 
+	height: 2em;
+	vertical-align: top;
+	text-align: left;
+}
+
+.center {
+	background-color: #DDDDDD;
+	border: 1px solid black; 
+	font-size: 0.8em;
+	padding: 1px; 
+	height: 2em;
+	vertical-align: top;
+	text-align: center;
+}
+
+.niewypelniane, .pouczenia td, .taknie {
+	border: 1px solid black;
+	font-size: 0.8em;
+	font-weight: bold;
+	padding: 1px; 
+	height: 2em;
+	vertical-align: top; 
+	text-align: center;
+}
+
+.kwota {
+	text-align: right;
+	padding-right: 0.2em;
+}
+
+.opisrubryki {
+	font-size: 0.5em;
+	margin-bottom: 0.2em;
+	text-align: left;
+	font-weight: bold;
+	text-transform: none; 
+}
+
+.opis-tekstowy{
+	font-size: 0.7em;
+	margin-bottom: 0.2em;
+	font-weight: bold;
+	text-transform: none; 
+}
+
+.czcionka td, .czcionka th {
+	font-size: 0.9em;
+	height: 1em;
+}
+
+.nazwa-dla-kodu {
+	font-size: 0.9em;
+}
+
+table.normalna, table.pouczenia, table.sposob-opodatkowania {
+	width: 100%;
+	margin: 0;
+	border: 1px solid black;
+}
+
+h2.tekst {
+	text-align: center;
+	margin: 0.5em auto;
+}
+
+.pouczenie {
+	padding: 0.5em 2em;
+	text-align: center;
+}
+
+p {
+	padding: 0;
+	margin: 0.2em 0;
+}
+
+.objasnienie ol {
+	list-style-type: decimal;
+}
+
+.objasnienie ol ul {
+	list-style-type: disc;
+}
+
+.taknie {
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.normalna-tekstowa {
+	width: 100%; 
+	border: 0px
+}
+
+ .tekst {
+	text-align: center;
+}
+
+.wartosc {
+	vertical-align: top;
+}
+
+.miesiac {
+	border: 1px solid black; 
+	font-size: 0.8em;
+	font-weight: bold;
+	padding: 1px; 
+	height: 2em;
+	vertical-align: middle; 
+	text-align: center;
+	background-color: #DDDDDD;
+}
+
+.podtytul {
+	font-size: medium;
+}
+
+.tytulzalacznika {
+	font-size: x-large;
+	font-weight: bold;
+	text-align: center;
+}
+
+.opis {
+	font-size: 1em;
+	padding: 4px; 
+}
+
+.opis-tabela {
+	font-size: 1em;
+	padding: 4px; 
+	border: 0;
+}
+
+.dodatkowe {
+	background-color: white; 
+	border: 0;
+}
+
+.wypunktowane {
+	font-size: 1em;
+	padding: 1px; 
+	vertical-align: top;
+}
+
+.tlo-formularza, .tlo-zalacznika {
+	padding-bottom: 1px;
+}
+
+&lt;!--@media print {
+	.lamstrone {
+		page-break-before: always;
+	}
+
+	.sekcja {
+		page-break-inside: avoid;
+	}
+}
+</style>
+    <style xmlns:pf="http://crd.gov.pl/wzor/2023/12/13/13064/" type="text/css">
+			.tlo-formularza {background-color: #D3D3D3; font-size:1.0em;}
+			.pogrubiane { border: 3px solid black;}
+			.niewypelnianeopisy {font-weight: bold}
+			.niewypelnianeopisyright {
+				background-color: #DDDDDD;
+				border: 1px solid black;
+				font-size: 1.2em;
+				font-weight: bold;
+				padding: 1px; 
+				height: 2em;
+				vertical-align: top;
+				text-align: right;
+				}
+		</style>
+    <style type="text/css">
+
+div.body {
+	width: 100%;
+	min-width: 480px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.deklaracja-new, div.zalacznik-new {
+	margin: 2em 0;
+}
+
+.tlo-zalacznika-new {
+	background-color: #D3D3D3;
+}
+
+table-new {
+	border-collapse: collapse;
+}
+
+.normalna-new, .tytul-sekcja-blok-new {
+	width: 100%;
+}
+
+.naglowek-new {
+	background-color: #CCDDFF;
+}
+
+.kod-formularza-new {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.naglowek-new .wartosc-new {
+	font-weight: bold;	
+}
+
+.tytul-new {
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+}
+
+.tytulformularza-new {
+	font-size: xx-large;
+	font-weight: bold;
+	text-align: center;
+}
+
+.okres-new {
+	display: block;
+	margin: 1em;
+	font-size: 1.2em;
+	text-align: center;
+	vertical-align: top;
+	clear: both; 
+}
+
+.data-new {
+	border: 1px solid black; 
+	padding: 2px 1.5em;
+	background-color: white;
+	font-weight: bold;
+	margin: 0 2em; 
+}
+
+.obok-daty-new {
+	text-align: right;
+	display: inline-block;
+	width: 45%;
+}
+
+.objasnienie-new {
+	border: 1px solid black;
+	padding: 0.25em 0.5em; 
+	font-size: 0.8em; 
+}
+
+.zalacznik-objasnienie-new {
+	background-color: #DDDDDD;	
+	border: 1px solid black;
+	font-size: 0.8em;
+	width:99.5%;
+}
+
+.prawne-new {
+	background-color: #DDDDDD;	
+	border: 1px solid black; 
+	font-size: 0.8em;
+}
+
+.prawne-new .etykieta-new {
+	min-width: 9em;
+}
+
+.wypelniane-new {
+	background-color: white;
+}
+
+.niewypelniane-new, .ukryte-new {
+	background-color: #DDDDDD;
+}
+
+.pouczenia-new td-new {
+	background-color: white;
+	border: 1px solid black;
+}
+
+.tytul-sekcja-blok-new {
+	background-color: #DDDDDD;
+	border: 1px solid black;
+	width: auto;
+}
+
+
+h1-new {
+	font-size: 1.4em;
+	font-weight: bold;
+	text-align: center;
+}
+
+h2-new {
+	text-align: left;
+	font-size: 1.2em;
+	font-weight: bold; 
+}
+
+h3-new {
+	text-align: left;
+	font-size: 1.2em;
+	font-weight: normal;
+}
+
+h4-new {
+	text-align: left;
+	font-size: 1em;
+	font-weight: normal;
+}
+
+h1-new, h2-new, h3-new, h4-new {
+	font-family: 'Calibri', sans-serif;
+	margin: 0;
+	padding: 1px;
+}
+
+.wypelniane-new {
+	border: 1px solid black; 
+	font-size: 1.2em;
+	padding: 1px; 
+	vertical-align: top;	
+	text-align: left;
+}
+
+	
+.puste-new {
+	background-color: #DDDDDD;
+	border: 1px solid black; 
+	font-size: 0.8em;
+	padding: 1px; 
+	height: 2em;
+	vertical-align: top;
+}
+
+.puste2-new {
+	background-color: #DDDDDD;
+	border: 1px solid black; 
+	 font-size: 1.2em;
+	padding: 1px; 
+	height: 2em;
+	text-align: center;
+}
+
+.niewypelnianeopisy-new {
+	background-color: #DDDDDD;
+	border: 1px solid black;
+	font-size: 0.8em;
+	padding: 1px; 
+	height: 2em;
+	vertical-align: top;
+	text-align: left;
+	font-weight: bold;
+}
+
+.niewypelnianeopisy-ciemne-new {
+	background-color: #AAAAAA;
+	border: 1px solid black;
+	font-size: 0.8em;
+	font-weight: bold;
+	padding: 1px; 
+	height: 2em;
+	vertical-align: top;
+	text-align: left;
+}
+
+.center-new {
+	background-color: #DDDDDD;
+	border: 1px solid black; 
+	font-size: 0.8em;
+	padding: 1px; 
+	height: 2em;
+	vertical-align: top;
+	text-align: center;
+}
+
+.central-new {
+		font-size: 0.8em;
+		padding: 1px; 
+		height: 2em;
+		text-align: center;
+		}
+
+.niewypelniane-new, .pouczenia-new td-new, .taknie-new {
+	border: 1px solid black;
+	font-size: 0.8em;
+	font-weight: bold;
+	padding: 1px; 
+	height: 2em;
+	vertical-align: top; 
+	text-align: center;
+}
+
+.kwota-new {
+	text-align: right;
+	padding-right: 0.2em;
+}
+
+.opisrubryki-new {
+	font-size: 0.5em;
+	margin-bottom: 0.2em;
+	text-align: left;
+	font-weight: bold;
+	text-transform: none; 
+}
+
+.opis-tekstowy-new {
+	font-size: 0.7em;
+	margin-bottom: 0.2em;
+	text-transform: none; 
+}
+
+.czcionka-new td-new, .czcionka-new th-new {
+	font-size: 0.9em;
+	height: 1em;
+}
+
+.nazwa-dla-kodu-new {
+	font-size: 0.9em;
+}
+
+table-new.normalna-new, table-new.pouczenia-new, table-new.sposob-opodatkowania-new {
+	width: 100%;
+	margin: 0;
+	border: 1px solid black;
+}
+
+h2-new.tekst-new {
+	text-align: center;
+	margin: 0.5em auto;
+}
+
+.pouczenie-new {
+	padding: 0.5em 2em;
+	text-align: center;
+}
+
+p-new {
+	padding: 0;
+	margin: 0.2em 0;
+}
+
+.objasnienie-new ol {
+	list-style-type: decimal;
+}
+
+.objasnienie-new ol ul {
+	list-style-type: disc;
+}
+
+.taknie-new {
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.normalna-tekstowa-new {
+	width: 100%; 
+	border: 0px
+}
+
+ .tekst-new {
+	text-align: center;
+}
+
+.wartosc-new-new {
+	vertical-align: top;
+}
+
+.miesiac-new {
+	border: 1px solid black; 
+	font-size: 0.8em;
+	font-weight: bold;
+	padding: 1px; 
+	height: 2em;
+	vertical-align: middle; 
+	text-align: center;
+	background-color: #DDDDDD;
+}
+
+.podtytul-new {
+	font-size: medium;
+}
+
+.tytulzalacznika-new {
+	font-size: x-large;
+	font-weight: bold;
+	text-align: center;
+}
+
+.opis-new {
+	font-size: 1em;
+	padding: 4px; 
+}
+
+.opis-tabela-new {
+	font-size: 1em;
+	padding: 4px; 
+	border: 0;
+}
+
+.dodatkowe-new {
+	background-color: white; 
+	border: 0;
+}
+
+.wypunktowane-new {
+	font-size: 1em;
+	padding: 1px; 
+	vertical-align: top;
+}
+
+.tlo-formularza-new, .tlo-zalacznika-new {
+	padding-bottom: 1px;
+}
+
+@media print {
+	.lamstrone-new {
+		page-break-before: always;
+	}
+
+	.sekcja-new {
+		page-break-inside: avoid;
+	}
+
+</style>
+  </head>
+  <body>
+    <div xmlns:pf="http://crd.gov.pl/wzor/2023/12/13/13064/" class="deklaracja">
+      <div class="naglowek">
+        <table>
+          <tr>
+            <td colspan="2"><span class="kod-formularza">PCC-3</span>&#160;<span class="wariant">(6)</span></td>
+          </tr>
+          <tr>
+            <td class="etykieta">Kod systemowy</td>
+            <td class="wartosc">PCC-3 (6)</td>
+          </tr>
+          <tr>
+            <td class="etykieta">Kod podatku</td>
+            <td class="wartosc">PCC</td>
+          </tr>
+        </table>
+      </div>
+      <div class="tlo-formularza">
+        <h1 class="nazwa">DEKLARACJA W SPRAWIE PODATKU OD CZYNNO&#346;CI CYWILNOPRAWNYCH</h1>
+        <div class="okres">
+          <span class="data"><span class="opisrubryki">Data dokonania czynno&#347;ci&#160;&#160;</span>2024-07-29</span>
+        </div>
+      </div>
+      <div class="prawne">
+        <table>
+          <tr>
+            <td class="etykieta" style="width: 10%">Podstawa prawna:</td>
+            <td class="wartosc">Art. 10 ust. 1 ustawy z dnia 9 wrze&#347;nia 2000 r. o podatku od czynno&#347;ci cywilnoprawnych (Dz. U. z 2023 r. poz. 170, 1463 i 1723), zwanej
+dalej &#8222;ustaw&#261;&#8221;.</td>
+          </tr>
+          <tr>
+            <td class="etykieta" valign="top">Sk&#322;adaj&#261;cy:</td>
+            <td class="wartosc">Podatnicy podatku od czynno&#347;ci cywilnoprawnych.</td>
+          </tr>
+          <tr>
+            <td class="etykieta">Termin sk&#322;adania:</td>
+            <td class="wartosc">14 dni od dnia powstania obowi&#261;zku podatkowego.</td>
+          </tr>
+          <tr>
+            <td class="etykieta">Miejsce sk&#322;adania:</td>
+            <td class="wartosc">Urz&#261;d skarbowy, przy pomocy kt&#243;rego swoje zadania wykonuje naczelnik urz&#281;du skarbowego, o kt&#243;rym mowa w art. 12 i 13 ustawy.</td>
+          </tr>
+        </table>
+      </div>
+      <h2 class="tytul-sekcja-blok">A. MIEJSCE I CEL SK&#321;ADANIA DEKLARACJI
+		</h2>
+      <table class="normalna">
+        <tr>
+          <td class="niewypelnianeopisy" style="width:33%">
+					Urz&#261;d skarbowy, do kt&#243;rego jest adresowana deklaracja<sup>1)</sup></td>
+          <td class="wypelniane" style="width:auto">
+            <div>0271&#160;
+		<span class="nazwa-dla-kodu">DOLNO&#346;L&#260;SKI URZ&#260;D SKARBOWY WE WROC&#321;AWIU</span></div>
+          </td>
+        </tr>
+        <tr>
+          <td class="niewypelnianeopisy">Cel z&#322;o&#380;enia deklaracji:</td>
+          <td class="wypelniane"><input type="checkbox" checked="checked" disabled="disabled"/>1. z&#322;o&#380;enie deklaracji
+						</td>
+        </tr>
+      </table>
+      <h2 class="tytul-sekcja-blok">B.&#160;DANE PODATNIKA DOKONUJ&#260;CEGO ZAP&#321;ATY LUB ZWOLNIONEGO Z PODATKU NA PODSTAWIE ART. 9 PKT 10 LIT. B USTAWY</h2>
+      <h3 class="tytul-sekcja-blok">B.1. DANE IDENTYFIKACYJNE</h3>
+      <div class="sekcja">
+        <table class="normalna">
+          <tr>
+            <td class=" wypelniane"><div class="opisrubryki">7. Podmiot sk&#322;adaj&#261;cy deklaracj&#281;:</div><input type="checkbox" checked="checked" disabled="disabled"/>2. strona umowy zamiany
+				</td>
+          </tr>
+        </table>
+        <table class="normalna">
+          <tr>
+            <td class=" wypelniane"><div class="opisrubryki">8. Rodzaj podatnika:</div><input type="checkbox" checked="checked" disabled="disabled"/>2. osoba fizyczna
+						</td>
+          </tr>
+        </table>
+        <div class="sekcja">
+          <table class="normalna">
+            <tr>
+              <td class="wypelniane"><div class="opisrubryki">Identyfikator podatkowy numer PESEL</div>54121832134</td>
+            </tr>
+          </table>
+        </div>
+        <table class="normalna">
+          <tr>
+            <td class="wypelniane" style="width:40%"><div class="opisrubryki">Nazwisko</div>WIRTUALNY</td>
+            <td class="wypelniane" style="width:40%"><div class="opisrubryki">Pierwsze imi&#281;</div>KAMIL</td>
+            <td class="wypelniane" style="width:20%"><div class="opisrubryki">Data urodzenia</div>1954-12-18</td>
+          </tr>
+        </table>
+        <h3 class="tytul-sekcja-blok">B.2. ADRES SIEDZIBY / AKTUALNY ADRES ZAMIESZKANIA</h3>
+        <div class="sekcja">
+          <table class="normalna">
+            <tr>
+              <td class="wypelniane"><div class="opisrubryki">Kraj</div>PL&#160;
+		<span class="nazwa-dla-kodu">(POLSKA)</span></td>
+              <td class="wypelniane" style="width:40%"><div class="opisrubryki">Wojew&#243;dztwo</div>&#346;L&#260;SKIE</td>
+              <td class="wypelniane" style="width:40%"><div class="opisrubryki">Powiat</div>M. KATOWICE</td>
+            </tr>
+          </table>
+          <table class="normalna">
+            <tr>
+              <td class="wypelniane" style="width:35%"><div class="opisrubryki">Gmina</div>M. KATOWICE</td>
+              <td class="wypelniane"><div class="opisrubryki">Ulica</div>ALPEJSKA</td>
+              <td class="wypelniane" style="width:10%"><div class="opisrubryki">Nr domu</div>6</td>
+              <td class="wypelniane" style="width:10%"><div class="opisrubryki">Nr lokalu</div>66</td>
+            </tr>
+          </table>
+          <table class="normalna">
+            <tr>
+              <td class="wypelniane"><div class="opisrubryki">Miejscowo&#347;&#263;</div>KATOWICE</td>
+              <td class="wypelniane"><div class="opisrubryki">Kod pocztowy</div>66-666</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h2 class="tytul-sekcja-blok">C.&#160;PRZEDMIOT OPODATKOWANIA I TRE&#346;&#262; CZYNNO&#346;CI CYWILNOPRAWNEJ</h2>
+      <table class="normalna">
+        <tr>
+          <td class=" wypelniane"><div class="opisrubryki">20. Przedmiot opodatkowania:</div><input type="checkbox" checked="checked" disabled="disabled"/>1. umowa
+				</td>
+        </tr>
+        <tr>
+          <td class=" wypelniane"><div class="opisrubryki">21. Miejsce po&#322;o&#380;enia rzeczy lub miejsce wykonywania prawa maj&#261;tkowego:</div><input type="checkbox" checked="checked" disabled="disabled"/>1. terytorium RP
+				</td>
+        </tr>
+        <tr>
+          <td class=" wypelniane"><div class="opisrubryki">22. Miejsce dokonania czynno&#347;ci cywilnoprawnej:</div><input type="checkbox" checked="checked" disabled="disabled"/>1. terytorium RP
+					</td>
+        </tr>
+        <tr>
+          <td class="wypelniane" style="width: 50%"><div class="opisrubryki">23. Zwi&#281;z&#322;e okre&#347;lenie tre&#347;ci i przedmiotu czynno&#347;ci cywilnoprawnej</div>Sprzeda&#322;em auto</td>
+        </tr>
+      </table>
+      <h2 class="tytul-sekcja-blok">D.&#160;OBLICZENIE NALE&#379;NEGO PODATKU OD CZYNNO&#346;CI CYWILNOPRAWNYCH, Z WYJ&#260;TKIEM UMOWY SP&#211;&#321;KI LUB JEJ ZMIANY</h2>
+      <table class="normalna">
+        <tr>
+          <td class="niewypelniane" style="width: 40%">
+						Rodzaj czynno&#347;ci cywilnoprawnej
+						<font style="font-weight: normal"><br/>(w tym zmiana umowy, orzeczenie s&#261;du lub ugoda)
+						</font></td>
+          <td class="niewypelniane" style="width: 25%">
+						Podstawa opodatkowania
+						<font style="font-weight: normal"><br/>okre&#347;lona zgodnie z art. 6 ustawy<br/>(po zaokr&#261;gleniu do pe&#322;nych z&#322;otych)
+						</font></td>
+          <td class="niewypelniane" style="width: 10%">
+						Stawka podatku
+						<font style="font-weight: normal"><br/>okre&#347;lona zgodnie z art. 7 ustawy
+						</font></td>
+          <td class="niewypelniane" style="width: 25%">
+						Obliczony nale&#380;ny podatek od czynno&#347;ci cywilnoprawnej
+						<font style="font-weight: normal"><br/>(po zaokr&#261;gleniu do pe&#322;nych z&#322;otych)
+						</font></td>
+        </tr>
+        <tr>
+          <td class="niewypelniane" style="font-weight: normal">a</td>
+          <td class="niewypelniane" style="font-weight: normal">b</td>
+          <td class="niewypelniane" style="font-weight: normal">c</td>
+          <td class="niewypelniane" style="font-weight: normal">d</td>
+        </tr>
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 35%" rowspan="2">Umowa sprzeda&#380;y<sup>3)</sup></td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">24.</div>
+            <div class="kwota">10001 z&#322;
+					</div>
+          </td>
+          <td class="niewypelnianeopisy" style="width: 12%">
+            <h1>
+              <div align="right">1%</div>
+            </h1>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">25.</div>
+            <div class="kwota">100 z&#322;
+					</div>
+          </td>
+        </tr>
+        <td class="wypelniane" style="width: 12%">
+          <div class="opisrubryki">26.</div>
+          <div class="kwota">
+						z&#322;
+					</div>
+        </td>
+        <td class="niewypelnianeopisy" style="width: 12%">
+          <h1>
+            <div align="right">2%</div>
+          </h1>
+        </td>
+        <td class="wypelniane" style="width: 12%">
+          <div class="opisrubryki">27.</div>
+          <div class="kwota">
+						z&#322;
+					</div>
+        </td>
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 35%">Umowa zamiany</td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">28.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">29.</div>
+            <div class="kwota">%
+						</div>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">30.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 35%">Umowa po&#380;yczki lub depozytu nieprawid&#322;owego, w tym zwolniona na podstawie art. 9 pkt 10 lit. b ustawy<sup>4)</sup></td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">31.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">32.</div>
+            <div class="kwota">%
+						</div>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">33.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 35%">Umowa darowizny w cz&#281;&#347;ci dotycz&#261;cej przej&#281;cia przez obdarowanego d&#322;ug&#243;w i ci&#281;&#380;ar&#243;w lub zobowi&#261;za&#324; darczy&#324;cy</td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">34.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">35.</div>
+            <div class="kwota">%
+						</div>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">36.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 35%">Ustanowienie odp&#322;atnego u&#380;ytkowania, w tym nieprawid&#322;owego</td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">37.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">38.</div>
+            <div class="kwota">%
+						</div>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">39.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 35%" rowspan="2">Ustanowienie hipoteki<sup>5)</sup></td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">40.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+          <td class="niewypelnianeopisy" style="width: 12%">
+            <h1>
+              <div align="right">0,1%</div>
+            </h1>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">41.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 12%">
+            <h1>
+              <div align="center">1</div>
+            </h1>
+          </td>
+          <td class="niewypelnianeopisyright" style="width: 12%">
+							19 z&#322;
+					</td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">42.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="wypelniane" style="width: 35%">
+            <div class="opisrubryki">Inna <font style="font-weight: normal">(wymieni&#263; jaka):</font></div>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">43.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">44.</div>
+            <div class="kwota">%
+							
+						</div>
+          </td>
+          <td class="wypelniane" style="width: 12%">
+            <div class="opisrubryki">45.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+        </tr>
+      </table>
+      <table class="normalna">
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 74%">Kwota nale&#380;nego podatku
+					<font style="font-weight: normal"><br/>Suma kwot z kolumny d.
+						</font></td>
+          <td class="wypelniane" style="width: 26%">
+            <div class="opisrubryki">46.</div>
+            <div class="kwota">100 z&#322;
+					</div>
+          </td>
+        </tr>
+      </table>
+      <h2 class="tytul-sekcja-blok">E.&#160;OBLICZENIE NALE&#379;NEGO PODATKU OD UMOWY SP&#211;&#321;KI / ZMIANY UMOWY SP&#211;&#321;KI</h2>
+      <h3 class="tytul-sekcja-blok">E.1. OKRE&#346;LENIE PODSTAWY OPODATKOWANIA</h3>
+      <table class="normalna">
+        <tr>
+          <td class=" wypelniane">
+            <div class="opisrubryki">47. Typ sp&#243;&#322;ki:</div>
+            <div class="opisrubryki"/>
+          </td>
+        </tr>
+      </table>
+      <table class="normalna">
+        <tr>
+          <td class=" wypelniane">
+            <div class="opisrubryki">48. Podstawa opodatkowania dotyczy:</div>
+            <div class="opisrubryki"/>
+          </td>
+        </tr>
+      </table>
+      <table class="normalna">
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 80%">Podstawa opodatkowania - okre&#347;lona zgodnie z art. 6 ust. 1 pkt 8 ustawy
+					<font style="font-weight: normal">
+							(po zaokr&#261;gleniu do pe&#322;nych z&#322;otych)
+					</font></td>
+          <td class="wypelniane" style="width: 20%">
+            <div class="opisrubryki">49.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+        </tr>
+      </table>
+      <h3 class="tytul-sekcja-blok">E.2. ODLICZENIA OD PODSTAWY OPODATKOWANIA - ART. 6 UST. 9 USTAWY</h3>
+      <table class="normalna">
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 80%">Op&#322;aty i koszty zwi&#261;zane z zawarciem umowy sp&#243;&#322;ki lub jej zmiany &#8211; na podstawie art. 6 ust. 9 ustawy</td>
+          <td class="wypelniane" style="width: 20%">
+            <div class="opisrubryki">50.</div>
+            <div class="kwota">
+						z&#322;&#8218;   gr
+					</div>
+          </td>
+        </tr>
+      </table>
+      <h3 class="tytul-sekcja-blok">E.3. OBLICZENIE NALE&#379;NEGO PODATKU</h3>
+      <table class="normalna">
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 80%">Podstawa obliczenia podatku
+						<font style="font-weight: normal"><br/>Od kwoty z poz. 49 nale&#380;y odj&#261;&#263; kwot&#281; z poz. 50. Je&#380;eli r&#243;&#380;nica jest liczb&#261; ujemn&#261;, nale&#380;y wpisa&#263; 0.
+						</font></td>
+          <td class="wypelniane" style="width: 20%">
+            <div class="opisrubryki">51.</div>
+            <div class="kwota">
+						z&#322;&#8218;   gr
+					</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 80%">Kwota nale&#380;nego podatku
+						<font style="font-weight: normal">
+							(po zaokr&#261;gleniu do pe&#322;nych z&#322;otych)
+							<br/>Podatek obliczony wed&#322;ug stawki okre&#347;lonej w art. 7 ust. 1 pkt 9 ustawy od podstawy z poz. 51.
+						</font></td>
+          <td class="wypelniane" style="width: 20%">
+            <div class="opisrubryki">52.</div>
+            <div class="kwota">
+						z&#322;
+					</div>
+          </td>
+        </tr>
+      </table>
+      <h2 class="tytul-sekcja-blok">F.&#160;PODATEK DO ZAP&#321;ATY</h2>
+      <table class="normalna">
+        <tr>
+          <td class="niewypelnianeopisy" style="width: 80%">Kwota podatku do zap&#322;aty
+						<font style="font-weight: normal"><br/>Nale&#380;y wpisa&#263; kwot&#281; z poz. 46 albo 52.
+						</font></td>
+          <td class="wypelniane pogrubiane" style="width: 20%">
+            <div class="opisrubryki">53.</div>
+            <div class="kwota">100 z&#322;
+					</div>
+          </td>
+        </tr>
+      </table>
+      <h2 class="tytul-sekcja-blok">G.&#160;INFORMACJE DODATKOWE
+					<span style="text-transform: none; font-weight: normal; font-size: 0.7em"><br/>W przypadku:<br/>
+						- umowy sp&#243;&#322;ki nale&#380;y poda&#263; adres siedziby sp&#243;&#322;ki (rzeczywistego o&#347;rodka zarz&#261;dzania),<br/>
+						- umowy sprzeda&#380;y, gdy kupuj&#261;cy nie ma miejsca zamieszkania lub siedziby na terytorium Rzeczypospolitej Polskiej, nale&#380;y poda&#263; miejsce zamieszkania lub siedzib&#281; sprzedawcy, a je&#380;eli &#380;adna ze stron nie ma miejsca zamieszkania lub siedziby na terytorium Rzeczypospolitej Polskiej, nale&#380;y poda&#263; miejsce dokonania czynno&#347;ci,<br/>
+						- umowy sprzeda&#380;y przedsi&#281;biorstwa albo jego zorganizowanej cz&#281;&#347;ci nale&#380;y poda&#263; siedzib&#281; przedsi&#281;biorstwa albo miejsce po&#322;o&#380;enia jego zorganizowanej cz&#281;&#347;ci,<br/>
+						- orzeczenia s&#261;du, w tym polubownego, oraz ugody, je&#380;eli przedmiotem jest przeniesienie w&#322;asno&#347;ci nieruchomo&#347;ci, prawa u&#380;ytkowania wieczystego lub sp&#243;&#322;dzielczego w&#322;asno&#347;ciowego prawa do lokalu mieszkalnego albo u&#380;ytkowego, nale&#380;y poda&#263; miejsce po&#322;o&#380;enia nieruchomo&#347;ci.
+					</span></h2>
+      <table class="normalna">
+        <tr>
+          <td class="wypelniane" style="width:60%">
+            <div class="opisrubryki">54. Wojew&#243;dztwo</div>
+          </td>
+          <td class="wypelniane" style="width:40%">
+            <div class="opisrubryki">55. Powiat</div>
+          </td>
+        </tr>
+      </table>
+      <table class="normalna">
+        <tr>
+          <td class="wypelniane" style="width:20%">
+            <div class="opisrubryki">56. Gmina</div>
+          </td>
+          <td class="wypelniane" style="width:50%">
+            <div class="opisrubryki">57. Ulica</div>
+          </td>
+          <td class="wypelniane" style="width:15%">
+            <div class="opisrubryki">58. Nr domu</div>
+          </td>
+          <td class="wypelniane" style="width:15%">
+            <div class="opisrubryki">59. Nr lokalu</div>
+          </td>
+        </tr>
+      </table>
+      <table class="normalna">
+        <tr>
+          <td class="wypelniane" style="width:70%">
+            <div class="opisrubryki">60. Miejscowo&#347;&#263;</div>
+          </td>
+          <td class="wypelniane" style="width:30%">
+            <div class="opisrubryki">61. Kod pocztowy</div>
+          </td>
+        </tr>
+      </table>
+      <h2 class="tytul-sekcja-blok">H.&#160;INFORMACJA O ZA&#321;&#260;CZNIKACH</h2>
+      <table class="normalna">
+        <tr>
+          <td class="wypelniane" style="width:30%">
+            <div class="opisrubryki">62. Liczba do&#322;&#261;czonych za&#322;&#261;cznik&#243;w PCC-3/A</div>
+            <div class="kwota">1</div>
+          </td>
+        </tr>
+      </table>
+      <h2 class="tekst">Obja&#347;nienia</h2>
+      <h3 align="justify">
+        <font size="2pt"><sup>1)</sup> Przez urz&#261;d, do kt&#243;rego adresowana jest deklaracja rozumie si&#281; urz&#261;d skarbowy, przy pomocy kt&#243;rego w&#322;a&#347;ciwy w sprawie podatku od czynno&#347;ci cywilnoprawnych naczelnik urz&#281;du skarbowego wykonuje swoje zadania.
+      </font>
+      </h3>
+      <h3 align="justify">
+        <font size="2pt"><sup>2)</sup> Zgodnie z art. 81 ustawy z dnia 29 sierpnia 1997 r. - Ordynacja podatkowa (Dz. U. z 2023 r. poz. 2383).
+      </font>
+      </h3>
+      <h3 align="justify">
+        <font size="2pt"><sup>3)</sup> W przypadku umowy sprzeda&#380;y, w kt&#243;rej nie wyodr&#281;bniono warto&#347;ci rzeczy lub praw maj&#261;tkowych, do kt&#243;rych maj&#261; zastosowanie r&#243;&#380;ne stawki podatku, w poz. 26 nale&#380;y wpisa&#263; &#322;&#261;czn&#261; warto&#347;&#263; tych rzeczy lub praw maj&#261;tkowych.
+      </font>
+      </h3>
+      <h3 align="justify">
+        <font size="2pt"><sup>4)</sup> W przypadku umowy po&#380;yczki zwolnionej na podstawie art. 9 pkt 10 lit. b ustawy, w poz. 31 nale&#380;y wpisa&#263; kwot&#281; udzielonej po&#380;yczki, a w poz. 32 i 33 nale&#380;y wpisa&#263; 0.
+      </font>
+      </h3>
+      <h3 align="justify">
+        <font size="2pt"><sup>5)</sup> W przypadku ustanowienia hipoteki na zabezpieczenie wierzytelno&#347;ci istniej&#261;cych, w poz. 40 nale&#380;y wpisa&#263; kwot&#281; zabezpieczonej wierzytelno&#347;ci; w przypadku ustanowienia hipoteki na zabezpieczenie wierzytelno&#347;ci o wysoko&#347;ci nieustalonej, w poz. 42 nale&#380;y wpisa&#263; liczb&#281; 19.
+      </font>
+      </h3>
+      <h2 class="tekst">Pouczenia</h2>
+      <h3 align="justify">
+        <font size="2pt">
+         Za podanie nieprawdy lub zatajenie prawdy i przez to nara&#380;enie podatku na uszczuplenie grozi odpowiedzialno&#347;&#263; przewidziana w Kodeksie karnym skarbowym.<br/>
+         W przypadku niezap&#322;acenia w obowi&#261;zuj&#261;cym terminie kwoty podatku od czynno&#347;ci cywilnoprawnych z poz. 53 lub wp&#322;acenia jej w niepe&#322;nej wysoko&#347;ci, niniejsza deklaracja stanowi podstaw&#281; do wystawienia tytu&#322;u wykonawczego, zgodnie z przepisami ustawy z dnia 17 czerwca 1966 r. o post&#281;powaniu egzekucyjnym w administracji (Dz. U. z 2023 r. poz. 2505).<br/></font>
+      </h3>
+      <div class="lamstrone"/>
+    </div>
+  </body>
+</html>
