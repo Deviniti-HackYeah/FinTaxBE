@@ -7,9 +7,9 @@ RUN pip install --no-cache-dir poetry==1.7.1  \
 
 COPY poetry.lock .
 COPY pyproject.toml .
-
 RUN poetry install --no-root
 
 COPY . .
+RUN poetry install
 
 CMD ["./scripts/run_prod.sh"]
