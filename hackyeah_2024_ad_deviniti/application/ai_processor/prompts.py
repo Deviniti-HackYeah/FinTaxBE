@@ -13,5 +13,6 @@ Kod pocztowy: %%KOD
 Ulica i numer domu: %%ULICA_NR_DOMU
 Województwo: %%WOJEWODZTWO
 Powiat: %%POWIAT
-Gmina: %%GMINA
+Gmina: %%GMINA.
+Odpowiedz wyłącznie kodem urzędu.
 """
