@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from hackyeah_2024_ad_deviniti.pcc_renderer.PccRenderer import PccRenderer
+from fastapi.responses import HTMLResponse, Response
 
 from hackyeah_2024_ad_deviniti.application.ai_processor.situation_verificator import SituationVerification
 from hackyeah_2024_ad_deviniti.presentation.dto import (
@@ -50,3 +52,15 @@ async def chat_interaction_sample(session_id: str) -> QuestionResponseDto:
         sources=[],
         extras=None,
     )
+
+@app.get("/pcc3.html", response_class=HTMLResponse)
+async def pcc3(data: str, kod_urzedu: str, pesel: str) -> str:
+    renderer = PccRenderer()
+    return renderer.render(data, kod_urzedu, pesel)
+
+
+@app.get("/pcc3.xml")
+async def pcc3(data: str, kod_urzedu: str, pesel: str) -> Response:
+    renderer = PccRenderer()
+    xml = renderer.xml(data, kod_urzedu, pesel)
+    return Response(content=xml, media_type="application/xml")
