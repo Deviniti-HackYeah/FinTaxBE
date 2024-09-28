@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from loguru import logger
+
 from hackyeah_2024_ad_deviniti.pcc_renderer.PccRenderer import PccRenderer
 from fastapi.responses import HTMLResponse, Response
 
@@ -28,10 +30,11 @@ async def root() -> Status:
 
 @app.post("/question/{session_id}")
 async def chat_interaction(session_id: str, request_body: QuestionRequestDto) -> QuestionResponseDto:
+    logger.info(f'request with {request_body}')
     process_result = await (SituationVerification().call_azure(request_body.data))
-    response_start = 'Twoje zapytanie dotyczy wniosku PCC-3' if process_result.is_ok \
-        else 'Twoje zapytanie dotyczy wniosku PCC-3'
-    response = f'{response_start}\n\n{process_result.justification}'
+    response_start = 'Twoje zapytanie dotyczy wniosku PCC-3.' if process_result.is_ok \
+        else 'Twoje zapytanie nie dotyczy wniosku PCC-3.'
+    response = f'{response_start}\n\n{process_result.justification_in_polish}'
     return QuestionResponseDto(
         response=TextResponses(
             agent_1=response,
