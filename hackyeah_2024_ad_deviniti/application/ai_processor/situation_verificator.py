@@ -5,7 +5,7 @@ from langchain_core.messages import SystemMessage, HumanMessage
 from loguru import logger
 from pydantic import BaseModel
 
-from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import get_bielik_2_2, get_azure_gpt_4o
+from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import get_azure_gpt_4o
 
 TEST_CASES = [
     {
@@ -71,6 +71,14 @@ TEST_CASES = [
     {
         "text": "Karol sprzedał swoje mieszkanie, a transakcja została przeprowadzona w formie aktu notarialnego. Notariusz pobrał odpowiedni podatek.",
         "is_ok": False
+    },
+    {
+        "text": "Tere fere",
+        "is_ok": False
+    },
+    {
+        "text": "Gówno w zoo",
+        "is_ok": False
     }
 ]
 
@@ -81,7 +89,8 @@ class SituationVerificationResult(BaseModel):
 
 
 SYSTEM = """
-Twoim zadaniem jest odpowiedzneie czy użytkownik z potrzebą jaką ma może wypełnić poniższy dokument (PCC-3)
+Twoim zadaniem jest odpowiedzenie czy użytkownik z potrzebą jaką ma może wypełnić poniższy dokument (PCC-3)
+Jeśli ktoś mówi na inny temat to odpowiedź ma być false. True tylko jak przypadek wchodzi w opis.
 
 To jest opis do składania deklaracji PCC-3
 
@@ -117,7 +126,6 @@ To jest opis do składania deklaracji PCC-3
 class SituationVerification:
     async def call_azure(self, message: str = "Jak dojechać do Polski z Czech?") -> SituationVerificationResult:
         llm = get_azure_gpt_4o()
-        # logger.info("start azure")
         start = datetime.datetime.now()
         response = await llm.with_structured_output(SituationVerificationResult).ainvoke([
             SystemMessage(
@@ -125,22 +133,7 @@ class SituationVerification:
             HumanMessage(content=message)
         ])
         end = datetime.datetime.now()
-        # logger.info(f'duration: {(end - start).total_seconds()}s')
-        # logger.info(response.content)
-        return response
-
-    async def call_bielik(self, message: str = "Jak dojechać do Polski z Czech?") -> SituationVerificationResult:
-        llm = get_bielik_2_2()
-        logger.info("start bielik")
-        start = datetime.datetime.now()
-        response: SituationVerificationResult = await llm.with_structured_output(SituationVerificationResult).ainvoke([
-            SystemMessage(
-                content=SYSTEM),
-            HumanMessage(content=message)
-        ])
-        end = datetime.datetime.now()
         logger.info(f'duration: {(end - start).total_seconds()}s')
-        logger.info(response)
         return response
 
 
@@ -151,8 +144,6 @@ async def main() -> None:
         logger.info(await (SituationVerification().call_azure(it['text'])))
         logger.info("#####################")
         logger.info("#####################")
-    # message = "Dzień dobry pożyczyłam od mojej przyjaciółki 40 tyś złotych, czy musze płacić podatek"
-    # asyncio.run()
 
 
 if __name__ == '__main__':
