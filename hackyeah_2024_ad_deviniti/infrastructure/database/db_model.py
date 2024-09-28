@@ -1,9 +1,12 @@
 from datetime import datetime
 
-from pydantic import BaseModel
+from sqlalchemy.orm import declarative_base
+
+DbBase = declarative_base()
 
 
-class ConversationTurnDB(BaseModel):
+class ConversationTurnDB(DbBase):
+    __tablename__ = 'conversation_turns'
     id: str
     requested_at: datetime
     returned_at: datetime
