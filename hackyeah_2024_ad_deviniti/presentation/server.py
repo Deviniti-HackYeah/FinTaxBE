@@ -34,7 +34,7 @@ async def chat_interaction(session_id: str, request_body: QuestionRequestDto) ->
     process_result = await (SituationVerification().call_azure(request_body.data))
     response_start = 'Twoje zapytanie dotyczy wniosku PCC-3' if process_result.is_ok \
         else 'Twoje zapytanie dotyczy wniosku PCC-3'
-    response = f'{response_start}\n\n{process_result.justification}'
+    response = f'{response_start}\n\n{process_result.justification_in_polish}'
     return QuestionResponseDto(
         response=TextResponses(
             agent_1=response,

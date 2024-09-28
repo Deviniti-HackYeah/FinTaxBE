@@ -79,13 +79,17 @@ TEST_CASES = [
     {
         "text": "Gówno w zoo",
         "is_ok": False
+    },
+    {
+        "text": "O kurwa",
+        "is_ok": False
     }
 ]
 
 
 class SituationVerificationResult(BaseModel):
     is_ok: bool
-    justification: str
+    justification_in_polish: str
 
 
 SYSTEM = """
