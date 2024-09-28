@@ -10,4 +10,6 @@ COPY pyproject.toml .
 
 RUN poetry install --no-root
 
-CMD ["poe", "run_server"]
+COPY . .
+
+CMD ["./scripts/run_prod.sh"]

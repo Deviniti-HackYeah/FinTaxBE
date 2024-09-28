@@ -1,0 +1,30 @@
+services:
+
+  tax_backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tax_backend
+    ports:
+      - "8301:8000"
+    env_file:
+      - .env
+    volumes:
+      - "${PWD}/aws_credentials:/root/.aws/credentials"
+
+  ca_polca_db:
+    container_name: tax_database
+    image: pgvector/pgvector:pg16
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - "ca-polca-postgres-data:/var/lib/postgresql/data"
+    env_file:
+      - .env
+
+
+volumes:
+  ca-polca-postgres-data:
