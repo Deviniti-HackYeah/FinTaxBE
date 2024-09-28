@@ -13,24 +13,42 @@ class QuestionSource(BaseModel):
     url: str
 
 
+class DocumentPayload(BaseModel):
+    title: str
+    url: str
+
+
+class ImagePayload(BaseModel):
+    url: str
+
+
+class QuotePayload(BaseModel):
+    text: str
+
+
+class LinkPayload(BaseModel):
+    title: str
+    url: str
+
+
 class QuestionExtrasDocument(BaseModel):
-    type: Literal["document"]
-    payload: dict
+    type: Literal['document']
+    payload: DocumentPayload
 
 
 class QuestionExtrasImage(BaseModel):
-    type: Literal["image"]
-    payload: dict
+    type: Literal['image']
+    payload: ImagePayload
 
 
 class QuestionExtrasQuote(BaseModel):
-    type: Literal["quote"]
-    payload: dict
+    type: Literal['quote']
+    payload: QuotePayload
 
 
 class QuestionExtrasLink(BaseModel):
-    type: Literal["link"]
-    payload: dict
+    type: Literal['link']
+    payload: LinkPayload
 
 
 QuestionExtras = Union[

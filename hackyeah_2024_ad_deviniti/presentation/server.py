@@ -24,3 +24,15 @@ async def chat_interaction(session_id: str) -> QuestionResponseDto:
         sources=[],
         extras=None,
     )
+
+
+@app.get("/question/{session_id}")
+async def chat_interaction_sample(session_id: str) -> QuestionResponseDto:
+    return QuestionResponseDto(
+        response=TextResponses(
+            agent_1=f"Odpowiedź agent 1 /-/ {session_id}",
+            agent_2=f"Odpowiedź agent 2 /-/ {session_id}",
+        ),
+        sources=[],
+        extras=None,
+    )
