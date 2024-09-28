@@ -22,11 +22,7 @@ class PccRenderer:
         
     def render(self, data: str, kod_urzedu: str, pesel : str) -> str:
 
-        with open('data.xml', 'r', encoding="utf-8") as xml_file:
-            xml_string = xml_file.read()
-            xml_string = xml_string.replace("%%DATA", data)
-            xml_string = xml_string.replace("%%KOD_URZEDU", kod_urzedu)
-            xml_string = xml_string.replace("%%PESEL", pesel)
+        xml_string = self.xml(data, kod_urzedu, pesel)
 
         # Parse the XML content
         xml_doc = ET.XML(bytes(xml_string, encoding='utf-8'))
@@ -42,3 +38,11 @@ class PccRenderer:
 
         return html
                 
+
+    def xml(self, data: str, kod_urzedu: str, pesel : str) -> str:
+        with open('data.xml', 'r', encoding="utf-8") as xml_file:
+            xml_string = xml_file.read()
+            xml_string = xml_string.replace("%%DATA", data)
+            xml_string = xml_string.replace("%%KOD_URZEDU", kod_urzedu)
+            xml_string = xml_string.replace("%%PESEL", pesel)
+        return xml_string
