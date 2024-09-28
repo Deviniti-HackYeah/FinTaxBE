@@ -1,4 +1,5 @@
 from typing import List, Literal, Optional, Union
+
 from pydantic import BaseModel
 
 
@@ -13,22 +14,22 @@ class QuestionSource(BaseModel):
 
 
 class QuestionExtrasDocument(BaseModel):
-    type: Literal['document']
+    type: Literal["document"]
     payload: dict
 
 
 class QuestionExtrasImage(BaseModel):
-    type: Literal['image']
+    type: Literal["image"]
     payload: dict
 
 
 class QuestionExtrasQuote(BaseModel):
-    type: Literal['quote']
+    type: Literal["quote"]
     payload: dict
 
 
 class QuestionExtrasLink(BaseModel):
-    type: Literal['link']
+    type: Literal["link"]
     payload: dict
 
 
@@ -44,7 +45,12 @@ class QuestionRequestDto(BaseModel):
     data: str
 
 
+class TextResponses(BaseModel):
+    agent_1: str
+    agent_2: str
+
+
 class QuestionResponseDto(BaseModel):
-    response: dict
+    response: TextResponses
     sources: List[QuestionSource]
     extras: Optional[QuestionExtras]

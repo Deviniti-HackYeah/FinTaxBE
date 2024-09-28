@@ -25,6 +25,9 @@ black = "^24.8.0"
 mypy = "^1.11.2"
 isort = "^5.13.2"
 
+[tool.isort]
+profile = "black"
+
 [tool.poe.tasks]
 dev = "fastapi dev hackyeah_2024_ad_deviniti/presentation/server.py --host 0.0.0.0"
 prod = "fastapi run hackyeah_2024_ad_deviniti/presentation/server.py --host 0.0.0.0"
