@@ -1,0 +1,7 @@
+# Obsługa Alembic - Wprowadzanie zmian
+
+Kroki aby wprowadzić zmiany w Pythonie przy użyciu Alembic:
+
+1. Modyfikacja modeli.
+2. Polecenie `alembic revision --autogenerate -m "Opis zmian"` generuje nową migrację na podstawie zmian.
+3. Polecenie `alembic upgrade head`, aplikuje migrację do bazy danych.

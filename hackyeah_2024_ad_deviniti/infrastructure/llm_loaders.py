@@ -1,12 +1,9 @@
-from dotenv import load_dotenv
 from langchain_core.language_models import BaseChatModel
 from langchain_openai import AzureChatOpenAI
 from langchain_openai.chat_models.base import BaseChatOpenAI
 from pydantic import SecretStr
 
-from hackyeah_2024_ad_deviniti.config.llm_config import get_bielik_config, get_azure_config
-
-load_dotenv(override=True)
+from hackyeah_2024_ad_deviniti.config.config_models import get_bielik_config, get_azure_config
 
 
 def get_bielik_2_2(temperature: float = 0.1, max_tokens: int = 200) -> BaseChatModel:

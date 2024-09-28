@@ -1,6 +1,13 @@
 import os
 
+from dotenv import load_dotenv
 from openai import BaseModel
+
+load_dotenv(override=True)
+
+
+class DatabaseConfig(BaseModel):
+    postgres_connection_string: str
 
 
 class BielikConfig(BaseModel):
@@ -15,6 +22,12 @@ class AzureConfig(BaseModel):
     azure_model_api_version: str
     azure_gpt_4o_deployment: str
     azure_gpt_4o_mini_deployment: str
+
+
+def get_db_config() -> DatabaseConfig:
+    return DatabaseConfig(
+        postgres_connection_string=os.environ['POSTGRES_CONNECTION_STRING']
+    )
 
 
 def get_bielik_config() -> BielikConfig:

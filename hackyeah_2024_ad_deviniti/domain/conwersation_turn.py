@@ -1,4 +1,5 @@
 import datetime
+from typing import Any, Dict
 
 from pydantic import BaseModel
 
@@ -9,4 +10,5 @@ class ConversationTurn(BaseModel):
     returned_at: datetime.datetime
     request: str
     response: str
-    stats: str
+    requested_intent: str
+    stats: Dict[str, Any]
