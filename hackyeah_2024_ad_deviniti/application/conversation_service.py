@@ -68,13 +68,13 @@ class ConversationService:
                 agent_2="Dołączam dokument który pokazuje wniosek PCC-3, czy chcesz go wypełnić?",
             ),
             sources=[],
-            extras=QuestionExtrasDocument(
+            extras=[QuestionExtrasDocument(
                 type="document",
                 payload=DocumentPayload(
                     title="pcc-3.pdf",
                     url="https://www.podatki.gov.pl/media/4135/pcc-3-05-012.pdf",
                 ),
-            )
+            )]
         )
 
     def get_history_turns(self, session_id: str) -> List[ConversationTurn]:

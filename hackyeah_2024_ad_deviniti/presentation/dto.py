@@ -71,4 +71,4 @@ class TextResponses(BaseModel):
 class TurnResponseFullDto(BaseModel):
     response: TextResponses
     sources: List[QuestionSource]
-    extras: Optional[QuestionExtras]
+    extras: List[QuestionExtras]
