@@ -15,10 +15,10 @@ class YesNoQuestionResponse(BaseModel):
     question_answer: str
 
     def is_yes(self) -> bool:
-        return self.question_answer.lower() == 'tak'
+        return self.question_answer.lower() == "tak"
 
     def is_no(self) -> bool:
-        return self.question_answer.lower() == 'nie'
+        return self.question_answer.lower() == "nie"
 
     def is_other(self) -> bool:
         return not self.is_yes() and not self.is_no()
@@ -32,12 +32,10 @@ Inna w przypadku kiedy odpowiedź jest trudna do określenia albo nie nawiązuje
 
 
 class YesNoQuestionAnswerProcesor:
-    async def call(
-            self, message: str
-    ) -> YesNoQuestionResponse:
+    async def call(self, message: str) -> YesNoQuestionResponse:
         llm = get_azure_gpt_4o()
         start = datetime.datetime.now()
-        response: SituationVerificationResult = await llm.with_structured_output(  # type: ignore
+        response: YesNoQuestionResponse = await llm.with_structured_output(  # type: ignore
             YesNoQuestionResponse
         ).ainvoke(
             [

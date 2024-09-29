@@ -22,7 +22,7 @@ def map_pydantic_to_sqlalchemy(pydantic_model: ConversationTurn) -> Conversation
 
 
 def map_sqlalchemy_to_pydantic(
-        sqlalchemy_model: ConversationTurnDB,
+    sqlalchemy_model: ConversationTurnDB,
 ) -> ConversationTurn:
     return ConversationTurn(
         turn_id=sqlalchemy_model.turn_id,

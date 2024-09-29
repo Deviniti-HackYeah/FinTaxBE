@@ -19,17 +19,17 @@ Ekstrahujesz czynność cywilnoprawną -- SPRZEDARZ albo POZYCZKA -- te wartośc
 
 class CzynnoscCywilnoPrawnaExtractor:
     async def call(
-            self,
-            message: str,
+        self,
+        message: str,
     ) -> CzynnoscCywilnoPrawnaResult:
         llm = get_azure_gpt_4o()
         start = datetime.datetime.now()
-        response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
+        response: CzynnoscCywilnoPrawnaResult = await llm.with_structured_output(  # type: ignore
             CzynnoscCywilnoPrawnaResult
         ).ainvoke(
             [
                 SystemMessage(content=SYSTEM),
-                HumanMessage(content=f'{message}'),
+                HumanMessage(content=f"{message}"),
             ]
         )
         end = datetime.datetime.now()

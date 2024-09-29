@@ -7,12 +7,15 @@ from loguru import logger
 from hackyeah_2024_ad_deviniti.application.ai_processor.situation_verificator import (
     SituationVerification,
 )
-from hackyeah_2024_ad_deviniti.application.ai_processor.yes_no_answer_exract import YesNoQuestionAnswerProcesor
+from hackyeah_2024_ad_deviniti.application.ai_processor.yes_no_answer_exract import (
+    YesNoQuestionAnswerProcesor,
+)
 from hackyeah_2024_ad_deviniti.application.form_fill_process import call_for_fill
 from hackyeah_2024_ad_deviniti.application.intents import (
+    A_ASK_FOR_PCC_DATE,
     ASK_FOR_FILL_PCC3,
     INCORRECT_SITUATION,
-    SITUATION_ADDITIONAL_QUESTION, A_ASK_FOR_PCC_DATE,
+    SITUATION_ADDITIONAL_QUESTION,
 )
 from hackyeah_2024_ad_deviniti.domain.conversation_turn import (
     ConversationTurn,
@@ -49,22 +52,22 @@ class ConversationService:
             full_response=turn_result.full_response,
             requested_intent=turn_result.intent,
             stats={},
-            pcc_3_form=Pcc3Form()
+            pcc_3_form=Pcc3Form(),
         )
         self._conversation_repository.add_conversation_turn(turn)
-        logger.info(f'requested intent {turn_result.intent}')
+        logger.info(f"requested intent {turn_result.intent}")
         return turn
 
     async def process_for_response(
-            self, session_id: str, action: UserAction
+        self, session_id: str, action: UserAction
     ) -> TurnResult:
         history = self.get_history_turns(session_id)
         # logger.info(history)
         last_intent = history[-1].requested_intent if history else None
-        logger.info(f'last_intent: {last_intent}')
+        logger.info(f"last_intent: {last_intent}")
         if len(history) == 0 or (
-                last_intent
-                and last_intent in [SITUATION_ADDITIONAL_QUESTION, INCORRECT_SITUATION]
+            last_intent
+            and last_intent in [SITUATION_ADDITIONAL_QUESTION, INCORRECT_SITUATION]
         ):
             return await self.process_situation_verification(action, history)
         elif last_intent == ASK_FOR_FILL_PCC3:
@@ -73,7 +76,7 @@ class ConversationService:
             return await call_for_fill(action, history)
 
     async def process_situation_verification(
-            self, action: UserAction, history: List[ConversationTurn]
+        self, action: UserAction, history: List[ConversationTurn]
     ) -> TurnResult:
         process_result = await SituationVerification().call(action.value, history)
         response_start = (
@@ -97,11 +100,14 @@ class ConversationService:
         response = f"{response_start}\n\n{process_result.justification_in_polish}"
         return TurnResult(
             full_response=TurnResponseFullDto(
+                response_id=str(uuid.uuid1()),
                 response=TextResponses(
                     agent_1=response,
-                    agent_2="Dołączam dokument który pokazuje wniosek PCC-3, czy chcesz go wypełnić?"
-                    if ASK_FOR_FILL_PCC3 == intent
-                    else "",
+                    agent_2=(
+                        "Dołączam dokument który pokazuje wniosek PCC-3, czy chcesz go wypełnić?"
+                        if ASK_FOR_FILL_PCC3 == intent
+                        else ""
+                    ),
                 ),
                 sources=[],
                 extras=(
@@ -119,12 +125,10 @@ class ConversationService:
                 ),
             ),
             intent=intent,
-            pcc_3_form=Pcc3Form()
+            pcc_3_form=Pcc3Form(),
         )
 
-    async def process_ask_to_start(
-            self, action: UserAction
-    ) -> TurnResult:
+    async def process_ask_to_start(self, action: UserAction) -> TurnResult:
         process_result = await YesNoQuestionAnswerProcesor().call(action.value)
         response_message = (
             "Kiedy miało miejsce zawarcie umowy cywilno prawnej?"
@@ -146,15 +150,13 @@ class ConversationService:
         )
         return TurnResult(
             full_response=TurnResponseFullDto(
-                response=TextResponses(
-                    agent_1=response_message,
-                    agent_2=""
-                ),
+                response_id=str(uuid.uuid1()),
+                response=TextResponses(agent_1=response_message, agent_2=""),
                 sources=[],
-                extras=[]
+                extras=[],
             ),
             intent=intent,
-            pcc_3_form=Pcc3Form()
+            pcc_3_form=Pcc3Form(),
         )
 
     def get_history_turns(self, session_id: str) -> List[ConversationTurn]:

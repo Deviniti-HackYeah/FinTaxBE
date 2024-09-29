@@ -7,7 +7,10 @@ from loguru import logger
 from pydantic import BaseModel
 
 from hackyeah_2024_ad_deviniti.domain.conversation_turn import ConversationTurn
-from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import get_azure_gpt_4o, get_azure_gpt_4o_mini
+from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import (
+    get_azure_gpt_4o,
+    get_azure_gpt_4o_mini,
+)
 
 
 class CelDeklaracjiResult(BaseModel):
@@ -26,13 +29,10 @@ Zwróć KOREKTA albo ZLOZENIE
 
 
 class CelDeklaracjiExtractor:
-    async def call(
-            self,
-            message: str
-    ) -> CelDeklaracjiResult:
+    async def call(self, message: str) -> CelDeklaracjiResult:
         llm = get_azure_gpt_4o_mini()
         start = datetime.datetime.now()
-        response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
+        response: CelDeklaracjiResult = await llm.with_structured_output(  # type: ignore
             CelDeklaracjiResult
         ).ainvoke(
             [

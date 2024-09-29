@@ -1,4 +1,5 @@
 import datetime
+
 from langchain_core.messages import HumanMessage, SystemMessage
 from loguru import logger
 from pydantic import BaseModel
@@ -18,17 +19,17 @@ umowa | zmiana umowy | orzeczenie sądu lub ugoda | inne
 
 class PrzedmiotOpodatkowaniaExtractor:
     async def call(
-            self,
-            message: str,
+        self,
+        message: str,
     ) -> PrzedmiotOpodatkowaniaResult:
         llm = get_azure_gpt_4o()
         start = datetime.datetime.now()
-        response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
+        response: PrzedmiotOpodatkowaniaResult = await llm.with_structured_output(  # type: ignore
             PrzedmiotOpodatkowaniaResult
         ).ainvoke(
             [
                 SystemMessage(content=SYSTEM),
-                HumanMessage(content=f'{message}'),
+                HumanMessage(content=f"{message}"),
             ]
         )
         end = datetime.datetime.now()

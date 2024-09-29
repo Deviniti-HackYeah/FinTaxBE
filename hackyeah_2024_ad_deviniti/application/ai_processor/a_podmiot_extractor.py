@@ -28,13 +28,10 @@ Jeśli nie podał wartości to podaj numer null.
 
 
 class PodmiotExtractor:
-    async def call(
-            self,
-            message: str
-    ) -> PodmiotExtractorResult:
+    async def call(self, message: str) -> PodmiotExtractorResult:
         llm = get_azure_gpt_4o_mini()
         start = datetime.datetime.now()
-        response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
+        response: PodmiotExtractorResult = await llm.with_structured_output(  # type: ignore
             PodmiotExtractorResult
         ).ainvoke(
             [

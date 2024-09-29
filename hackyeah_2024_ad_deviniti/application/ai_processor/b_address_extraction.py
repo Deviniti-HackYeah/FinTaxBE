@@ -5,7 +5,10 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from loguru import logger
 from pydantic import BaseModel
 
-from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import get_azure_gpt_4o_mini, get_azure_gpt_4o
+from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import (
+    get_azure_gpt_4o,
+    get_azure_gpt_4o_mini,
+)
 
 
 class AddressResult(BaseModel):
@@ -39,17 +42,17 @@ Twoim zadaniem jest podać:
 
 class AdresExtractor:
     async def call(
-            self,
-            message: str,
+        self,
+        message: str,
     ) -> AddressResult:
         llm = get_azure_gpt_4o()
         start = datetime.datetime.now()
-        response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
+        response: AddressResult = await llm.with_structured_output(  # type: ignore
             AddressResult
         ).ainvoke(
             [
                 SystemMessage(content=SYSTEM),
-                HumanMessage(content=f'{message}'),
+                HumanMessage(content=f"{message}"),
             ]
         )
         end = datetime.datetime.now()

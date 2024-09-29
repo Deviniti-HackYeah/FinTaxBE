@@ -46,7 +46,7 @@ async def chat_interaction(
 
 
 @app.get("/history/{session_id}")
-async def chat_interaction(
+async def history(
         session_id: str,
         request_body: QuestionRequestDto,
         service: ConversationService = Depends(get_conversation_service),
@@ -54,7 +54,7 @@ async def chat_interaction(
     turns = service.get_history_turns(session_id)
     to_return = []
     for it in turns:
-        to_return.append({'data': it.user_action.value})
+        to_return.append({"data": it.user_action.value})
         to_return.append(it.full_response)
     return to_return
 

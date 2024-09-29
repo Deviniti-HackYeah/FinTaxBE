@@ -19,13 +19,10 @@ Jeśli nie umiesz określić to zwróć null.
 
 
 class IdentyfikatorPodatkowyExtractor:
-    async def call(
-            self,
-            message: str
-    ) -> IdentyfikatorPodatkowyResult:
+    async def call(self, message: str) -> IdentyfikatorPodatkowyResult:
         llm = get_azure_gpt_4o_mini()
         start = datetime.datetime.now()
-        response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
+        response: IdentyfikatorPodatkowyResult = await llm.with_structured_output(  # type: ignore
             IdentyfikatorPodatkowyResult
         ).ainvoke(
             [

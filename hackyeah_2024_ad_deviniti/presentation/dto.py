@@ -72,3 +72,4 @@ class TurnResponseFullDto(BaseModel):
     response: TextResponses
     sources: List[QuestionSource] = []
     extras: List[QuestionExtras] = []
+    response_id: str

@@ -20,17 +20,17 @@ może być wyrażenie akceptacji -- wtedy nic nie podawaj
 
 class UsExtractor:
     async def call(
-            self,
-            message: str,
+        self,
+        message: str,
     ) -> UsCodeResult:
         llm = get_azure_gpt_4o()
         start = datetime.datetime.now()
-        response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
+        response: UsCodeResult = await llm.with_structured_output(  # type: ignore
             UsCodeResult
         ).ainvoke(
             [
                 SystemMessage(content=SYSTEM),
-                HumanMessage(content=f'{message}'),
+                HumanMessage(content=f"{message}"),
             ]
         )
         end = datetime.datetime.now()

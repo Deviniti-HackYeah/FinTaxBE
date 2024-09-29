@@ -26,13 +26,10 @@ Masz zwrócić jedną z Opcji:
 
 
 class RodzajPodatnikaExtractor:
-    async def call(
-            self,
-            message: str
-    ) -> RodzajPodatnikaExtractorResult:
+    async def call(self, message: str) -> RodzajPodatnikaExtractorResult:
         llm = get_azure_gpt_4o_mini()
         start = datetime.datetime.now()
-        response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
+        response: RodzajPodatnikaExtractorResult = await llm.with_structured_output(  # type: ignore
             RodzajPodatnikaExtractorResult
         ).ainvoke(
             [

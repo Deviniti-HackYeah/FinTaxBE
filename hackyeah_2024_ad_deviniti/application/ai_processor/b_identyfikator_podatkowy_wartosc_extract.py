@@ -19,19 +19,15 @@ Jeśli będzie niepoprawny to zwróć null.
 
 
 class IdentyfikatorPodatkowyWartoscExtractor:
-    async def call(
-            self,
-            message: str,
-            type: str
-    ) -> IdentyfikatorPodatkowyResult:
+    async def call(self, message: str, type_id: str) -> IdentyfikatorPodatkowyResult:
         llm = get_azure_gpt_4o_mini()
         start = datetime.datetime.now()
-        response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
+        response: IdentyfikatorPodatkowyResult = await llm.with_structured_output(  # type: ignore
             IdentyfikatorPodatkowyResult
         ).ainvoke(
             [
                 SystemMessage(content=SYSTEM),
-                HumanMessage(content=f'wyciągnij {type}:\n\n{message}'),
+                HumanMessage(content=f"wyciągnij {type_id}:\n\n{message}"),
             ]
         )
         end = datetime.datetime.now()

@@ -18,13 +18,10 @@ Z podanego pola wyekstrahuj NIP. Jeśli nie będzie poprawny albo nie zostanie p
 
 
 class NipExtractor:
-    async def call(
-            self,
-            message: str
-    ) -> NipResult:
+    async def call(self, message: str) -> NipResult:
         llm = get_azure_gpt_4o_mini()
         start = datetime.datetime.now()
-        response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
+        response: NipResult = await llm.with_structured_output(  # type: ignore
             NipResult
         ).ainvoke(
             [

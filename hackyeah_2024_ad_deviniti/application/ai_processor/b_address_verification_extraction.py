@@ -5,7 +5,10 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from loguru import logger
 from pydantic import BaseModel
 
-from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import get_azure_gpt_4o_mini, get_azure_gpt_4o
+from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import (
+    get_azure_gpt_4o,
+    get_azure_gpt_4o_mini,
+)
 
 
 class AddressVerifyResult(BaseModel):
@@ -22,17 +25,17 @@ W podanym tekście losowo mogą pojawić się kraj, powiat, kod pocztowy, gmina
 
 class AdresVerifyExtractor:
     async def call(
-            self,
-            message: str,
+        self,
+        message: str,
     ) -> AddressVerifyResult:
         llm = get_azure_gpt_4o()
         start = datetime.datetime.now()
-        response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
+        response: AddressVerifyResult = await llm.with_structured_output(  # type: ignore
             AddressVerifyResult
         ).ainvoke(
             [
                 SystemMessage(content=SYSTEM),
-                HumanMessage(content=f'{message}'),
+                HumanMessage(content=f"{message}"),
             ]
         )
         end = datetime.datetime.now()
