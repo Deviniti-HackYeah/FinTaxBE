@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from hackyeah_2024_ad_deviniti.domain.conwersation_turn import ConversationTurn
+from hackyeah_2024_ad_deviniti.domain.conversation_turn import ConversationTurn
 
 
 def get_history_context(

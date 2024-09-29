@@ -6,7 +6,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from loguru import logger
 from pydantic import BaseModel
 
-from hackyeah_2024_ad_deviniti.domain.conwersation_turn import ConversationTurn
+from hackyeah_2024_ad_deviniti.domain.conversation_turn import ConversationTurn
 from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import get_azure_gpt_4o
 
 

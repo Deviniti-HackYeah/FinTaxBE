@@ -4,7 +4,7 @@ from loguru import logger
 from sqlalchemy.future import select
 from sqlalchemy.orm import Session
 
-from hackyeah_2024_ad_deviniti.domain.conwersation_turn import ConversationTurn
+from hackyeah_2024_ad_deviniti.domain.conversation_turn import ConversationTurn
 from hackyeah_2024_ad_deviniti.infrastructure.database.db_model import (
     ConversationTurnDB,
 )

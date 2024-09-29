@@ -1,4 +1,4 @@
-from hackyeah_2024_ad_deviniti.domain.conwersation_turn import ConversationTurn
+from hackyeah_2024_ad_deviniti.domain.conversation_turn import ConversationTurn
 from hackyeah_2024_ad_deviniti.domain.user_action import UserAction
 from hackyeah_2024_ad_deviniti.infrastructure.database.db_model import (
     ConversationTurnDB,

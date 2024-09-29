@@ -7,12 +7,13 @@ from loguru import logger
 from hackyeah_2024_ad_deviniti.application.ai_processor.situation_verificator import (
     SituationVerification,
 )
+from hackyeah_2024_ad_deviniti.application.ai_processor.yes_no_answer_exract import YesNoQuestionAnswerProcesor
 from hackyeah_2024_ad_deviniti.application.intents import (
-    CORRECT_FOR_PCC_3,
+    ASK_FOR_FILL_PCC3,
     INCORRECT_SITUATION,
-    SITUATION_ADDITIONAL_QUESTION,
+    SITUATION_ADDITIONAL_QUESTION, A_ASK_FOR_PCC_DATE,
 )
-from hackyeah_2024_ad_deviniti.domain.conwersation_turn import (
+from hackyeah_2024_ad_deviniti.domain.conversation_turn import (
     ConversationTurn,
     TurnResult,
 )
@@ -51,21 +52,21 @@ class ConversationService:
         return turn
 
     async def process_for_response(
-        self, session_id: str, action: UserAction
+            self, session_id: str, action: UserAction
     ) -> TurnResult:
         history = self.get_history_turns(session_id)
         logger.info(history)
         last_intent = history[-1].requested_intent if history else None
         if len(history) == 0 or (
-            last_intent
-            and last_intent in [SITUATION_ADDITIONAL_QUESTION, INCORRECT_SITUATION]
+                last_intent
+                and last_intent in [SITUATION_ADDITIONAL_QUESTION, INCORRECT_SITUATION]
         ):
-            return await self.process_conversation_init(action, history)
+            return await self.process_situation_verification(action, history)
         else:
             raise Exception()
 
-    async def process_conversation_init(
-        self, action: UserAction, history: List[ConversationTurn]
+    async def process_situation_verification(
+            self, action: UserAction, history: List[ConversationTurn]
     ) -> TurnResult:
         process_result = await SituationVerification().call(action.value, history)
         response_start = (
@@ -78,7 +79,7 @@ class ConversationService:
             )
         )
         intent = (
-            CORRECT_FOR_PCC_3
+            ASK_FOR_FILL_PCC3
             if process_result.is_ok
             else (
                 SITUATION_ADDITIONAL_QUESTION
@@ -94,15 +95,54 @@ class ConversationService:
                     agent_2="Dołączam dokument który pokazuje wniosek PCC-3, czy chcesz go wypełnić?",
                 ),
                 sources=[],
-                extras=[
-                    QuestionExtrasDocument(
-                        type="document",
-                        payload=DocumentPayload(
-                            title="pcc-3.pdf",
-                            url="https://www.podatki.gov.pl/media/4135/pcc-3-05-012.pdf",
-                        ),
-                    )
-                ] if CORRECT_FOR_PCC_3 == intent else [],
+                extras=(
+                    [
+                        QuestionExtrasDocument(
+                            type="document",
+                            payload=DocumentPayload(
+                                title="pcc-3.pdf",
+                                url="https://www.podatki.gov.pl/media/4135/pcc-3-05-012.pdf",
+                            ),
+                        )
+                    ]
+                    if ASK_FOR_FILL_PCC3 == intent
+                    else []
+                ),
+            ),
+            intent=intent,
+        )
+
+    async def process_ask_to_start(
+            self, action: UserAction, history: List[ConversationTurn]
+    ) -> TurnResult:
+        process_result = await YesNoQuestionAnswerProcesor().call(action.value)
+        response_message = (
+            "Kiedy miało miejsce zawarcie umowy cywilno prawnej?"
+            if process_result.is_yes()
+            else (
+                "Rozumiem, czy mogę Ci jeszcze w czymś pomóc?"
+                if process_result.is_no()
+                else "Proszę odpowiedz na pytanie czy chcesz wypełnić formularz PCC-3?"
+            )
+        )
+        intent = (
+            A_ASK_FOR_PCC_DATE
+            if process_result.is_yes()
+            else (
+                SITUATION_ADDITIONAL_QUESTION
+                if process_result.is_no()
+                else ASK_FOR_FILL_PCC3
+            )
+        )
+
+        return TurnResult(
+            full_response=TurnResponseFullDto(
+                response=TextResponses(
+                    agent_1=response_message,
+                    agent_2=""
+                ),
+                sources=[],
+                extras=[]
             ),
             intent=intent,
         )
