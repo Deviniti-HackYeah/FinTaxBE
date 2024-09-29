@@ -1,3 +1,5 @@
+from typing import Any, List
+
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, Response
@@ -48,11 +50,10 @@ async def chat_interaction(
 @app.get("/history/{session_id}")
 async def history(
         session_id: str,
-        request_body: QuestionRequestDto,
         service: ConversationService = Depends(get_conversation_service),
-) -> TurnResponseFullDto:
+) -> List[Any]:
     turns = service.get_history_turns(session_id)
-    to_return = []
+    to_return: List[Any] = []
     for it in turns:
         to_return.append({"data": it.user_action.value})
         to_return.append(it.full_response)

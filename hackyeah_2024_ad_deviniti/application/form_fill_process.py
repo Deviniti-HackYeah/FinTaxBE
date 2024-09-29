@@ -5,11 +5,26 @@ from hackyeah_2024_ad_deviniti.application.form_flow.form_a import (
     DateStep,
     PodmiotSkladajacyjStep,
 )
-from hackyeah_2024_ad_deviniti.application.form_flow.form_b import RodzajPodatnikaStep, NipStep, \
-    IdentyfikatorPodatkowyStep, IdentyfikatorPodatkowyWartoscStep, AddressStep, AddressVerifyStep, UrzadSkarbowyStep
-from hackyeah_2024_ad_deviniti.application.form_flow.form_c import PrzedmiotOpodatkowaniaStep, OkreslenieTresciStep
-from hackyeah_2024_ad_deviniti.application.form_flow.form_d import CzynnoscCywilnoPrawnaStep, SprzedarzPodstStep, \
-    PozyczkaPodstawaStep, PouczenieStep, FinishStep
+from hackyeah_2024_ad_deviniti.application.form_flow.form_b import (
+    AddressStep,
+    AddressVerifyStep,
+    IdentyfikatorPodatkowyStep,
+    IdentyfikatorPodatkowyWartoscStep,
+    NipStep,
+    RodzajPodatnikaStep,
+    UrzadSkarbowyStep,
+)
+from hackyeah_2024_ad_deviniti.application.form_flow.form_c import (
+    OkreslenieTresciStep,
+    PrzedmiotOpodatkowaniaStep,
+)
+from hackyeah_2024_ad_deviniti.application.form_flow.form_d import (
+    CzynnoscCywilnoPrawnaStep,
+    FinishStep,
+    PouczenieStep,
+    PozyczkaPodstawaStep,
+    SprzedarzPodstStep,
+)
 from hackyeah_2024_ad_deviniti.domain.conversation_turn import (
     ConversationTurn,
     TurnResult,
@@ -33,12 +48,12 @@ ALL_STEPS = [
     SprzedarzPodstStep(),
     PozyczkaPodstawaStep(),
     PouczenieStep(),
-    FinishStep()
+    FinishStep(),
 ]
 
 
 async def call_for_fill(
-        action: UserAction, history: List[ConversationTurn]
+    action: UserAction, history: List[ConversationTurn]
 ) -> TurnResult:
     for it in ALL_STEPS:
         if it.choose_this_step(history, action):

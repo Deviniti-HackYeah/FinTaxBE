@@ -19,8 +19,8 @@ Masz ekstrachować kwoty które są pozytywne, jeśli nie to zwróć Null
 
 class KwotaExtractor:
     async def call(
-            self,
-            message: str,
+        self,
+        message: str,
     ) -> KwotaResponse:
         llm = get_azure_gpt_4o()
         start = datetime.datetime.now()
