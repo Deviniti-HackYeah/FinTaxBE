@@ -16,3 +16,8 @@ class ConversationTurn(BaseModel):
     full_response: TurnResponseFullDto
     requested_intent: Optional[str]
     stats: Dict[str, Any]
+
+
+class TurnResult(BaseModel):
+    full_response: TurnResponseFullDto
+    intent: Optional[str]

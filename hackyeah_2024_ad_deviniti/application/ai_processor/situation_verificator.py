@@ -1,10 +1,13 @@
 import asyncio
 import datetime
+from typing import Optional, List
 
 from langchain_core.messages import HumanMessage, SystemMessage
 from loguru import logger
 from pydantic import BaseModel
 
+from hackyeah_2024_ad_deviniti.application.ai_processor.tools import get_history_context
+from hackyeah_2024_ad_deviniti.domain.conwersation_turn import ConversationTurn
 from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import get_azure_gpt_4o
 
 TEST_CASES = [
@@ -77,12 +80,18 @@ TEST_CASES = [
 
 class SituationVerificationResult(BaseModel):
     is_ok: bool
-    justification_in_polish: str
+    should_ask_additional_question: bool
+    justification_in_polish: Optional[str]
+    additional_question: Optional[str]
 
 
 SYSTEM = """
 Twoim zadaniem jest odpowiedzenie czy użytkownik z potrzebą jaką ma może wypełnić poniższy dokument (PCC-3)
-Jeśli ktoś mówi na inny temat to odpowiedź ma być false, jakieś głupie zapytanie itp... True tylko jak przypadek wchodzi w opis, nawet częściowo -- wtedy uzupełnij.
+Jeśli ktoś mówi na inny temat to odpowiedź ma być false, jakieś głupie zapytanie itp...
+True tylko jak jesteś pewny że pasuje.
+Jak odpowiedź wymaga odpowiedzi na dodatkowe pytanie zadaj je i oznacz should_ask_additional_question.
+
+######################
 
 To jest opis do składania deklaracji PCC-3
 
@@ -117,14 +126,14 @@ To jest opis do składania deklaracji PCC-3
 
 class SituationVerification:
     async def call(
-        self, message: str = "Jak dojechać do Polski z Czech?"
+            self, message: str, history: List[ConversationTurn]
     ) -> SituationVerificationResult:
         llm = get_azure_gpt_4o()
         start = datetime.datetime.now()
         response: SituationVerificationResult = await llm.with_structured_output(  # type: ignore
             SituationVerificationResult
         ).ainvoke(
-            [SystemMessage(content=SYSTEM), HumanMessage(content=message)]
+            [SystemMessage(content=SYSTEM), HumanMessage(content=get_history_context(history, message))]
         )
         end = datetime.datetime.now()
         logger.info(f"duration: {(end - start).total_seconds()}s")
@@ -132,12 +141,14 @@ class SituationVerification:
 
 
 async def main() -> None:
-    for it in TEST_CASES:
-        logger.info(it["text"])
-        logger.info(it["is_ok"])
-        # logger.info(await SituationVerification().call(it["text"]))
-        logger.info("#####################")
-        logger.info("#####################")
+    # for it in TEST_CASES:
+    #     logger.info(it["text"])
+    #     logger.info(it["is_ok"])
+    #     # logger.info(await SituationVerification().call(it["text"]))
+    #     logger.info("#####################")
+    #     logger.info("#####################")
+    result = await SituationVerification().call("Kupiłem ostatnio auto")
+    logger.info(result)
 
 
 if __name__ == "__main__":
