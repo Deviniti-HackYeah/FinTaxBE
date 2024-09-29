@@ -102,7 +102,7 @@ class ConversationService:
                             url="https://www.podatki.gov.pl/media/4135/pcc-3-05-012.pdf",
                         ),
                     )
-                ],
+                ] if CORRECT_FOR_PCC_3 == intent else [],
             ),
             intent=intent,
         )
