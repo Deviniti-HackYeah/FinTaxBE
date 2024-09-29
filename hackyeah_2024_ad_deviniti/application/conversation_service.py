@@ -59,15 +59,15 @@ class ConversationService:
         return turn
 
     async def process_for_response(
-        self, session_id: str, action: UserAction
+            self, session_id: str, action: UserAction
     ) -> TurnResult:
         history = self.get_history_turns(session_id)
         # logger.info(history)
         last_intent = history[-1].requested_intent if history else None
         logger.info(f"last_intent: {last_intent}")
         if len(history) == 0 or (
-            last_intent
-            and last_intent in [SITUATION_ADDITIONAL_QUESTION, INCORRECT_SITUATION]
+                last_intent
+                and last_intent in [SITUATION_ADDITIONAL_QUESTION, INCORRECT_SITUATION]
         ):
             return await self.process_situation_verification(action, history)
         elif last_intent == ASK_FOR_FILL_PCC3:
@@ -76,7 +76,7 @@ class ConversationService:
             return await call_for_fill(action, history)
 
     async def process_situation_verification(
-        self, action: UserAction, history: List[ConversationTurn]
+            self, action: UserAction, history: List[ConversationTurn]
     ) -> TurnResult:
         process_result = await SituationVerification().call(action.value, history)
         response_start = (
@@ -97,7 +97,8 @@ class ConversationService:
                 else INCORRECT_SITUATION
             )
         )
-        response = f"{response_start}\n\n{process_result.justification_in_polish}"
+        just = process_result.justification_in_polish if process_result.justification_in_polish else ''
+        response = f"{response_start}\n\n{just}".strip()
         return TurnResult(
             full_response=TurnResponseFullDto(
                 response_id=str(uuid.uuid1()),
