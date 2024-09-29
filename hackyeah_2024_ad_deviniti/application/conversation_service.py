@@ -97,7 +97,8 @@ class ConversationService:
                 else INCORRECT_SITUATION
             )
         )
-        response = f"{response_start}\n\n{process_result.justification_in_polish}"
+        just = process_result.justification_in_polish if process_result.justification_in_polish else ''
+        response = f"{response_start}\n\n{just}"
         return TurnResult(
             full_response=TurnResponseFullDto(
                 response_id=str(uuid.uuid1()),
