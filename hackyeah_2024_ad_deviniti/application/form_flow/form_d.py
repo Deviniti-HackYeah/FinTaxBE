@@ -1,19 +1,15 @@
 import uuid
 from typing import List
 
-from hackyeah_2024_ad_deviniti.application.ai_processor.c_przedmiot_opodatkowania_extractor import (
-    PrzedmiotOpodatkowaniaExtractor,
-)
 from hackyeah_2024_ad_deviniti.application.ai_processor.d_czynnosc_cywilno_prawna import (
     CzynnoscCywilnoPrawnaExtractor,
 )
+from hackyeah_2024_ad_deviniti.application.ai_processor.d_kwota import KwotaExtractor
 from hackyeah_2024_ad_deviniti.application.form_flow.form_step import DialogStep
 from hackyeah_2024_ad_deviniti.application.intents import (
     CZYNNOSC_CYWILNO_PRAWNA,
-    OKRESLENIE_TRESCI,
     POZYCZKA_KWOTA,
-    RODZAJ_PODATNIKA,
-    SPRZEDAZ_KWOTA,
+    SPRZEDAZ_KWOTA, POUCZENIE, FINISH,
 )
 from hackyeah_2024_ad_deviniti.domain.conversation_turn import (
     ConversationTurn,
@@ -29,12 +25,12 @@ from hackyeah_2024_ad_deviniti.presentation.dto import (
 class CzynnoscCywilnoPrawnaStep(DialogStep):
 
     def choose_this_step(
-        self, previous_turns: List[ConversationTurn], user_action: UserAction
+            self, previous_turns: List[ConversationTurn], user_action: UserAction
     ) -> bool:
         return previous_turns[-1].requested_intent == CZYNNOSC_CYWILNO_PRAWNA
 
     async def process_step(
-        self, user_action: UserAction, previous_turns: List[ConversationTurn]
+            self, user_action: UserAction, previous_turns: List[ConversationTurn]
     ) -> TurnResult:
         result = await CzynnoscCywilnoPrawnaExtractor().call(user_action.value)
         if result.czynnosc_cywilno_prawna is None:
@@ -61,3 +57,122 @@ class CzynnoscCywilnoPrawnaStep(DialogStep):
                 ),
                 pcc_3_form=form,
             )
+
+
+class SprzedarzPodstStep(DialogStep):
+
+    def choose_this_step(
+            self, previous_turns: List[ConversationTurn], user_action: UserAction
+    ) -> bool:
+        return previous_turns[-1].requested_intent == SPRZEDAZ_KWOTA
+
+    async def process_step(
+            self, user_action: UserAction, previous_turns: List[ConversationTurn]
+    ) -> TurnResult:
+        result = await KwotaExtractor().call(user_action.value)
+        if result.kwota is None:
+            return TurnResult(
+                full_response=TurnResponseFullDto(
+                    response_id=str(uuid.uuid1()),
+                    response=TextResponses(agent_1="Podaj kwote sprzedarzy"),
+                ),
+                intent=CZYNNOSC_CYWILNO_PRAWNA,
+                pcc_3_form=previous_turns[-1].pcc_3_form,
+            )
+        else:
+            form = previous_turns[-1].pcc_3_form
+            form.umowa_pozyczki_podstawa = result.kwota
+            return TurnResult(
+                full_response=TurnResponseFullDto(
+                    response_id=str(uuid.uuid1()),
+                    response=TextResponses(agent_1="Zaakceptuj pouczenie prawne"),
+                ),
+                intent=POUCZENIE,
+                pcc_3_form=form
+            )
+
+
+class PozyczkaPodstawaStep(DialogStep):
+
+    def choose_this_step(
+            self, previous_turns: List[ConversationTurn], user_action: UserAction
+    ) -> bool:
+        return previous_turns[-1].requested_intent == POZYCZKA_KWOTA
+
+    async def process_step(
+            self, user_action: UserAction, previous_turns: List[ConversationTurn]
+    ) -> TurnResult:
+        result = await KwotaExtractor().call(user_action.value)
+        if result.kwota is None:
+            return TurnResult(
+                full_response=TurnResponseFullDto(
+                    response_id=str(uuid.uuid1()),
+                    response=TextResponses(agent_1="Podaj kwote pozyczki"),
+                ),
+                intent=POZYCZKA_KWOTA,
+                pcc_3_form=previous_turns[-1].pcc_3_form,
+            )
+        else:
+            form = previous_turns[-1].pcc_3_form
+            form.umowa_pozyczki_podstawa = result.kwota
+            return TurnResult(
+                full_response=TurnResponseFullDto(
+                    response_id=str(uuid.uuid1()),
+                    response=TextResponses(agent_1="Zaakceptuj pouczenie prawne"),
+                ),
+                intent=POUCZENIE,
+                pcc_3_form=form
+            )
+
+
+class PouczenieStep(DialogStep):
+
+    def choose_this_step(
+            self, previous_turns: List[ConversationTurn], user_action: UserAction
+    ) -> bool:
+        return previous_turns[-1].requested_intent == POUCZENIE
+
+    async def process_step(
+            self, user_action: UserAction, previous_turns: List[ConversationTurn]
+    ) -> TurnResult:
+        result = await KwotaExtractor().call(user_action.value)
+        if result.kwota is None:
+            return TurnResult(
+                full_response=TurnResponseFullDto(
+                    response_id=str(uuid.uuid1()),
+                    response=TextResponses(agent_1="Musisz pouczenie zgodę przed wysłaniem"),
+                ),
+                intent=POUCZENIE,
+                pcc_3_form=previous_turns[-1].pcc_3_form,
+            )
+        else:
+            form = previous_turns[-1].pcc_3_form
+            form.umowa_pozyczki_podstawa = result.kwota
+            return TurnResult(
+                full_response=TurnResponseFullDto(
+                    response_id=str(uuid.uuid1()),
+                    response=TextResponses(agent_1="Dziekujemy"),
+                ),
+                intent=FINISH,
+                pcc_3_form=form
+            )
+
+
+class FinishStep(DialogStep):
+
+    def choose_this_step(
+            self, previous_turns: List[ConversationTurn], user_action: UserAction
+    ) -> bool:
+        return previous_turns[-1].requested_intent == FINISH
+
+    async def process_step(
+            self, user_action: UserAction, previous_turns: List[ConversationTurn]
+    ) -> TurnResult:
+        return TurnResult(
+            full_response=TurnResponseFullDto(
+                response_id=str(uuid.uuid1()),
+                response=TextResponses(agent_1="Dziękujemy"),
+            ),
+            intent=FINISH,
+            pcc_3_form=previous_turns[-1].pcc_3_form,
+        )

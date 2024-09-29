@@ -20,3 +20,6 @@ OKRESLENIE_TRESCI = "okreslenie_tresci"
 CZYNNOSC_CYWILNO_PRAWNA = "czynnosc_cywilno_prawna"
 POZYCZKA_KWOTA = "okreslenie_tresci"
 SPRZEDAZ_KWOTA = "okreslenie_tresci"
+
+POUCZENIE = "pouczenie"
+FINISH = "pouczenie"

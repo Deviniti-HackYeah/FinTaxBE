@@ -5,13 +5,36 @@ from hackyeah_2024_ad_deviniti.application.form_flow.form_a import (
     DateStep,
     PodmiotSkladajacyjStep,
 )
+from hackyeah_2024_ad_deviniti.application.form_flow.form_b import RodzajPodatnikaStep, NipStep, \
+    IdentyfikatorPodatkowyStep, IdentyfikatorPodatkowyWartoscStep, AddressStep, AddressVerifyStep, UrzadSkarbowyStep
+from hackyeah_2024_ad_deviniti.application.form_flow.form_c import PrzedmiotOpodatkowaniaStep, OkreslenieTresciStep
+from hackyeah_2024_ad_deviniti.application.form_flow.form_d import CzynnoscCywilnoPrawnaStep, SprzedarzPodstStep, \
+    PozyczkaPodstawaStep, PouczenieStep, FinishStep
 from hackyeah_2024_ad_deviniti.domain.conversation_turn import (
     ConversationTurn,
     TurnResult,
 )
 from hackyeah_2024_ad_deviniti.domain.user_action import UserAction
 
-ALL_STEPS = [DateStep(), CelZlozeniaStep(), PodmiotSkladajacyjStep()]
+ALL_STEPS = [
+    DateStep(),
+    CelZlozeniaStep(),
+    PodmiotSkladajacyjStep(),
+    RodzajPodatnikaStep(),
+    NipStep(),
+    IdentyfikatorPodatkowyStep(),
+    IdentyfikatorPodatkowyWartoscStep(),
+    AddressStep(),
+    AddressVerifyStep(),
+    UrzadSkarbowyStep(),
+    PrzedmiotOpodatkowaniaStep(),
+    OkreslenieTresciStep(),
+    CzynnoscCywilnoPrawnaStep(),
+    SprzedarzPodstStep(),
+    PozyczkaPodstawaStep(),
+    PouczenieStep(),
+    FinishStep()
+]
 
 
 async def call_for_fill(
