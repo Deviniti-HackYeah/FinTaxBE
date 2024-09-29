@@ -42,7 +42,7 @@ class YesNoQuestionAnswerProcesor:
         ).ainvoke(
             [
                 SystemMessage(content=SYSTEM),
-                HumanMessage(content=get_history_context(message)),
+                HumanMessage(content=message),
             ]
         )
         end = datetime.datetime.now()

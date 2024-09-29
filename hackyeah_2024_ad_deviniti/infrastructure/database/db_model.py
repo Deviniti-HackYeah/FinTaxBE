@@ -9,8 +9,8 @@ DbBase = declarative_base()
 
 class ConversationTurnDB(DbBase):  # type: ignore
     __tablename__ = "conversation_turns"
-    session_id: Mapped[str] = mapped_column(String, primary_key=True)
-    turn_id: Mapped[str] = mapped_column(String, nullable=False)
+    session_id: Mapped[str] = mapped_column(String, nullable=False)
+    turn_id: Mapped[str] = mapped_column(String, primary_key=True)
     requested_at: Mapped[datetime] = mapped_column(DateTime, nullable=False)
     returned_at: Mapped[datetime] = mapped_column(DateTime, nullable=False)
     user_action: Mapped[Dict[str, Any]] = mapped_column(JSON, nullable=False)

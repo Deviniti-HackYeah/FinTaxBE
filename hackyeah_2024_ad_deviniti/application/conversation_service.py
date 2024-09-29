@@ -49,21 +49,24 @@ class ConversationService:
             stats={},
         )
         self._conversation_repository.add_conversation_turn(turn)
+        logger.info(f'requested intent {turn_result.intent}')
         return turn
 
     async def process_for_response(
             self, session_id: str, action: UserAction
     ) -> TurnResult:
         history = self.get_history_turns(session_id)
-        logger.info(history)
+        # logger.info(history)
         last_intent = history[-1].requested_intent if history else None
+        logger.info(f'last_intent: {last_intent}')
         if len(history) == 0 or (
                 last_intent
                 and last_intent in [SITUATION_ADDITIONAL_QUESTION, INCORRECT_SITUATION]
         ):
             return await self.process_situation_verification(action, history)
-        else:
-            raise Exception()
+        elif last_intent == ASK_FOR_FILL_PCC3:
+            return await self.process_ask_to_start(action)
+        raise Exception('Not implemented')
 
     async def process_situation_verification(
             self, action: UserAction, history: List[ConversationTurn]
@@ -92,7 +95,9 @@ class ConversationService:
             full_response=TurnResponseFullDto(
                 response=TextResponses(
                     agent_1=response,
-                    agent_2="Dołączam dokument który pokazuje wniosek PCC-3, czy chcesz go wypełnić?",
+                    agent_2="Dołączam dokument który pokazuje wniosek PCC-3, czy chcesz go wypełnić?"
+                    if ASK_FOR_FILL_PCC3 == intent
+                    else "",
                 ),
                 sources=[],
                 extras=(
@@ -113,7 +118,7 @@ class ConversationService:
         )
 
     async def process_ask_to_start(
-            self, action: UserAction, history: List[ConversationTurn]
+            self, action: UserAction
     ) -> TurnResult:
         process_result = await YesNoQuestionAnswerProcesor().call(action.value)
         response_message = (

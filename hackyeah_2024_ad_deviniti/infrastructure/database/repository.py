@@ -29,10 +29,15 @@ class ConversationTurnRepository:
         stmt = select(ConversationTurnDB).where(
             ConversationTurnDB.session_id == session_id
         )
-        return sorted(
+        db_result = self._session.execute(stmt).scalars().all()
+        logger.info([it for it in db_result])
+        sorted_result = sorted(
             [
                 map_sqlalchemy_to_pydantic(it)
-                for it in self._session.execute(stmt).scalars().all()
+                for it in db_result
             ],
             key=lambda x: x.requested_at,
         )
+        sorted_result.sort(key=lambda it: it.requested_at)
+        logger.info([it for it in sorted_result])
+        return sorted_result
