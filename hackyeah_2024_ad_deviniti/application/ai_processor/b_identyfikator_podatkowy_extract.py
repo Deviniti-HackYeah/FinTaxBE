@@ -8,24 +8,25 @@ from pydantic import BaseModel
 from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import get_azure_gpt_4o_mini
 
 
-class NipResult(BaseModel):
-    nip: Optional[str]
+class IdentyfikatorPodatkowyResult(BaseModel):
+    identyfikator_podatkowy: Optional[str]
 
 
 SYSTEM = """
-Z podanego pola wyekstrahuj NIP. Jeśli nie będzie poprawny albo nie zostanie podany zwróć null
+Twoim zadaniem jest ekstrakcja identyfikatora podatkowego -- do użytkownik ma do wyboru: NIP i PESEL.
+Jeśli nie umiesz określić to zwróć null.
 """
 
 
-class RodzajPodatnikaExtractor:
+class IdentyfikatorPodatkowyExtractor:
     async def call(
             self,
             message: str
-    ) -> NipResult:
+    ) -> IdentyfikatorPodatkowyResult:
         llm = get_azure_gpt_4o_mini()
         start = datetime.datetime.now()
         response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
-            NipResult
+            IdentyfikatorPodatkowyResult
         ).ainvoke(
             [
                 SystemMessage(content=SYSTEM),
