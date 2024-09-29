@@ -2,6 +2,8 @@ import datetime
 import uuid
 from typing import List
 
+from loguru import logger
+
 from hackyeah_2024_ad_deviniti.application.ai_processor.situation_verificator import (
     SituationVerification,
 )
@@ -38,14 +40,15 @@ class ConversationService:
             stats={},
         )
         self._conversation_repository.add_conversation_turn(turn)
-        return response_full
+        return turn
 
     async def process_for_response(
         self, session_id: str, action: UserAction
     ) -> TurnResponseFullDto:
         history = self.get_history_turns(session_id)
+        logger.info(history)
         if len(history) == 0:
-            return await self.process_for_response(session_id, action)
+            return await self.process_conversation_init(action)
         else:
             raise Exception()
 

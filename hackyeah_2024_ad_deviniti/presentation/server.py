@@ -1,18 +1,11 @@
-import datetime
-import uuid
-
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, Response
 from loguru import logger
 
-from hackyeah_2024_ad_deviniti.application.ai_processor.situation_verificator import (
-    SituationVerification,
-)
 from hackyeah_2024_ad_deviniti.application.conversation_service import (
     ConversationService,
 )
-from hackyeah_2024_ad_deviniti.domain.conwersation_turn import ConversationTurn
 from hackyeah_2024_ad_deviniti.domain.user_action import UserAction
 from hackyeah_2024_ad_deviniti.pcc_renderer.PccRenderer import PccRenderer
 from hackyeah_2024_ad_deviniti.presentation.dependency_injection import (
@@ -21,7 +14,6 @@ from hackyeah_2024_ad_deviniti.presentation.dependency_injection import (
 from hackyeah_2024_ad_deviniti.presentation.dto import (
     QuestionRequestDto,
     Status,
-    TextResponses,
     TurnResponseFullDto,
 )
 

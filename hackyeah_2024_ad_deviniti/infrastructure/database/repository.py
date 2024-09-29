@@ -1,5 +1,6 @@
 from typing import List
 
+from loguru import logger
 from sqlalchemy.future import select
 from sqlalchemy.orm import Session
 
@@ -24,6 +25,7 @@ class ConversationTurnRepository:
         self._session.commit()
 
     def get_conversation_turns_by_id(self, session_id: str) -> List[ConversationTurn]:
+        logger.info(f'search {session_id}')
         stmt = select(ConversationTurnDB).where(
             ConversationTurnDB.session_id == session_id
         )
