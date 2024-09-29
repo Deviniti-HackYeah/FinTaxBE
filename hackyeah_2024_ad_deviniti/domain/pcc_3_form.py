@@ -33,6 +33,7 @@ class Pcc3Form(BaseModel):
     numer_domu: FormField = FormField()
     numer_lokalu: FormField = FormField()
     kod_pocztowy: FormField = FormField()
+    urzad_skarbowy: FormField = FormField()
     przedmiot_opodatkowania: FormField = FormField()
     zwiezle_okreslenie_tresci: FormField = FormField()
     rodzaj_czynnosci_cywilno_prawnej: FormField = FormField()

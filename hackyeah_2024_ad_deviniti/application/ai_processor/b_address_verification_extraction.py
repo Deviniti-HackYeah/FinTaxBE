@@ -5,33 +5,34 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from loguru import logger
 from pydantic import BaseModel
 
-from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import get_azure_gpt_4o_mini
+from hackyeah_2024_ad_deviniti.infrastructure.llm_loaders import get_azure_gpt_4o_mini, get_azure_gpt_4o
 
 
-class IdentyfikatorPodatkowyResult(BaseModel):
-    identyfikator_podatkowy_wartosc: Optional[str]
+class AddressVerifyResult(BaseModel):
+    kraj: Optional[str]
+    kod_pocztowy: Optional[str]
+    powiat: Optional[str]
+    gmina: Optional[str]
 
 
 SYSTEM = """
-Twoim zadaniem jest wyekstrahować identyfikator podatkowy.
-Jeśli będzie niepoprawny to zwróć null.
-"""
+W podanym tekście losowo mogą pojawić się kraj, powiat, kod pocztowy, gmina
+ """
 
 
-class IdentyfikatorPodatkowyWartoscExtractor:
+class AdresVerifyExtractor:
     async def call(
             self,
             message: str,
-            type: str
-    ) -> IdentyfikatorPodatkowyResult:
-        llm = get_azure_gpt_4o_mini()
+    ) -> AddressVerifyResult:
+        llm = get_azure_gpt_4o()
         start = datetime.datetime.now()
         response: IsContinuousConversationResult = await llm.with_structured_output(  # type: ignore
-            IdentyfikatorPodatkowyResult
+            AddressVerifyResult
         ).ainvoke(
             [
                 SystemMessage(content=SYSTEM),
-                HumanMessage(content=f'wyciągnij {type}:\n\n{message}'),
+                HumanMessage(content=f'{message}'),
             ]
         )
         end = datetime.datetime.now()
