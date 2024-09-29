@@ -35,9 +35,9 @@ async def root() -> Status:
 
 @app.post("/question/{session_id}")
 async def chat_interaction(
-        session_id: str,
-        request_body: QuestionRequestDto,
-        service: ConversationService = Depends(get_conversation_service),
+    session_id: str,
+    request_body: QuestionRequestDto,
+    service: ConversationService = Depends(get_conversation_service),
 ) -> TurnResponseFullDto:
     logger.info(f"request with {request_body}")
     user_action = UserAction(type="message", value=request_body.data)

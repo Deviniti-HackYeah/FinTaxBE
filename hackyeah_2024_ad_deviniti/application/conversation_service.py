@@ -13,8 +13,10 @@ from hackyeah_2024_ad_deviniti.infrastructure.database.repository import (
     ConversationTurnRepository,
 )
 from hackyeah_2024_ad_deviniti.presentation.dto import (
+    DocumentPayload,
+    QuestionExtrasDocument,
     TextResponses,
-    TurnResponseFullDto, QuestionExtrasDocument, DocumentPayload,
+    TurnResponseFullDto,
 )
 
 
@@ -24,9 +26,7 @@ class ConversationService:
     def __init__(self, conversation_repository: ConversationTurnRepository) -> None:
         self._conversation_repository = conversation_repository
 
-    async def run_turn(
-            self, session_id: str, action: UserAction
-    ) -> ConversationTurn:
+    async def run_turn(self, session_id: str, action: UserAction) -> ConversationTurn:
         start_time = datetime.datetime.now()
         response_full = await self.process_for_response(session_id, action)
         turn = ConversationTurn(
@@ -67,10 +67,14 @@ class ConversationService:
                 agent_1=response,
                 agent_2="Dołączam dokument który pokazuje wniosek PCC-3, czy chcesz go wypełnić?",
             ),
-            sources=[QuestionExtrasDocument(
-                payload=DocumentPayload(title='pcc-3.pdf',
-                                        url="https://www.podatki.gov.pl/media/4135/pcc-3-05-012.pdf"))],
-            extras=None,
+            sources=[],
+            extras=QuestionExtrasDocument(
+                type="document",
+                payload=DocumentPayload(
+                    title="pcc-3.pdf",
+                    url="https://www.podatki.gov.pl/media/4135/pcc-3-05-012.pdf",
+                ),
+            )
         )
 
     def get_history_turns(self, session_id: str) -> List[ConversationTurn]:
