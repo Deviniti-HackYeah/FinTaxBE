@@ -1,9 +1,11 @@
-from typing import Optional, List
+from typing import List, Optional
 
 from hackyeah_2024_ad_deviniti.domain.conwersation_turn import ConversationTurn
 
 
-def get_history_context(history: List[ConversationTurn], message: Optional[str] = None) -> str:
+def get_history_context(
+    history: List[ConversationTurn], message: Optional[str] = None
+) -> str:
     history_messages: List[str] = []
     for it in history:
         history_messages.append(f"User: {it.user_action.value}")

@@ -1,6 +1,6 @@
 import asyncio
 import datetime
-from typing import Optional, List
+from typing import List, Optional
 
 from langchain_core.messages import HumanMessage, SystemMessage
 from loguru import logger
@@ -126,14 +126,17 @@ To jest opis do składania deklaracji PCC-3
 
 class SituationVerification:
     async def call(
-            self, message: str, history: List[ConversationTurn]
+        self, message: str, history: List[ConversationTurn]
     ) -> SituationVerificationResult:
         llm = get_azure_gpt_4o()
         start = datetime.datetime.now()
         response: SituationVerificationResult = await llm.with_structured_output(  # type: ignore
             SituationVerificationResult
         ).ainvoke(
-            [SystemMessage(content=SYSTEM), HumanMessage(content=get_history_context(history, message))]
+            [
+                SystemMessage(content=SYSTEM),
+                HumanMessage(content=get_history_context(history, message)),
+            ]
         )
         end = datetime.datetime.now()
         logger.info(f"duration: {(end - start).total_seconds()}s")
@@ -147,8 +150,9 @@ async def main() -> None:
     #     # logger.info(await SituationVerification().call(it["text"]))
     #     logger.info("#####################")
     #     logger.info("#####################")
-    result = await SituationVerification().call("Kupiłem ostatnio auto")
-    logger.info(result)
+    # result = await SituationVerification().call("Kupiłem ostatnio auto")
+    # logger.info(result)
+    pass
 
 
 if __name__ == "__main__":
