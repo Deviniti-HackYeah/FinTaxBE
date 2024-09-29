@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deklaracja xmlns="http://crd.gov.pl/wzor/2023/12/13/13064/">
+<Naglowek>
+<KodFormularza kodSystemowy="PCC-3 (6)" kodPodatku="PCC" rodzajZobowiazania="Z"
+wersjaSchemy="1-0E">PCC-3</KodFormularza>
+<WariantFormularza>6</WariantFormularza>
+<CelZlozenia poz="P_6">1</CelZlozenia>
+<Data poz="P_4">2024-09-20</Data>
+<KodUrzedu>0228</KodUrzedu>
+</Naglowek>
+<Podmiot1 rola="Podatnik">
+<OsobaFizyczna>
+<PESEL>88080818142</PESEL>
+<ImiePierwsze>ANNE</ImiePierwsze>
+<Nazwisko>NOWAK</Nazwisko>
+<DataUrodzenia>1988-08-08</DataUrodzenia>
+</OsobaFizyczna>
+<AdresZamieszkaniaSiedziby rodzajAdresu="RAD">
+<AdresPol>
+<KodKraju>PL</KodKraju>
+<Wojewodztwo>DOLNOŚLĄSKIE</Wojewodztwo>
+<Powiat>WROCŁAW</Powiat>
+<Gmina>M. WROCŁAW</Gmina>
+<Ulica>PARKOWA</Ulica>
+<NrDomu>16</NrDomu>
+<NrLokalu></NrLokalu>
+<Miejscowosc>WROCŁAW</Miejscowosc>
+<KodPocztowy>51-616</KodPocztowy>
+</AdresPol>
+</AdresZamieszkaniaSiedziby>
+</Podmiot1>
+<PozycjeSzczegolowe>
+<P_7>2</P_7>
+<P_20>1</P_20>
+<P_21>1</P_21>
+<P_22>1</P_22>
+<P_23>KUPIŁEM SAMOCHÓD</P_23>
+<P_24>20000</P_24>
+<P_25>200</P_25>
+<P_46>200</P_46>
+<P_53>200</P_53>
+<P_62>1</P_62>
+</PozycjeSzczegolowe>
+<Pouczenia>1</Pouczenia>
+</Deklaracja>
