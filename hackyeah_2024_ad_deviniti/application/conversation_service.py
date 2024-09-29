@@ -14,7 +14,7 @@ from hackyeah_2024_ad_deviniti.infrastructure.database.repository import (
 )
 from hackyeah_2024_ad_deviniti.presentation.dto import (
     TextResponses,
-    TurnResponseFullDto,
+    TurnResponseFullDto, QuestionExtrasDocument, DocumentPayload,
 )
 
 
@@ -25,7 +25,7 @@ class ConversationService:
         self._conversation_repository = conversation_repository
 
     async def run_turn(
-        self, session_id: str, action: UserAction
+            self, session_id: str, action: UserAction
     ) -> ConversationTurn:
         start_time = datetime.datetime.now()
         response_full = await self.process_for_response(session_id, action)
@@ -43,7 +43,7 @@ class ConversationService:
         return turn
 
     async def process_for_response(
-        self, session_id: str, action: UserAction
+            self, session_id: str, action: UserAction
     ) -> TurnResponseFullDto:
         history = self.get_history_turns(session_id)
         logger.info(history)
@@ -53,7 +53,7 @@ class ConversationService:
             raise Exception()
 
     async def process_conversation_init(
-        self, action: UserAction
+            self, action: UserAction
     ) -> TurnResponseFullDto:
         process_result = await SituationVerification().call(action.value)
         response_start = (
@@ -67,7 +67,9 @@ class ConversationService:
                 agent_1=response,
                 agent_2="Dołączam dokument który pokazuje wniosek PCC-3, czy chcesz go wypełnić?",
             ),
-            sources=[],
+            sources=[QuestionExtrasDocument(
+                payload=DocumentPayload(title='pcc-3.pdf',
+                                        url="https://www.podatki.gov.pl/media/4135/pcc-3-05-012.pdf"))],
             extras=None,
         )
 

@@ -32,7 +32,7 @@ class LinkPayload(BaseModel):
 
 
 class QuestionExtrasDocument(BaseModel):
-    type: Literal["document"]
+    type: Literal["document"] = "document"
     payload: DocumentPayload
 
 
