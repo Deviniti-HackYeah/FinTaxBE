@@ -79,6 +79,12 @@ async def pcc3_xml(data: str, kod_urzedu: str, pesel: str) -> Response:
     xml = renderer.xml(data, kod_urzedu, pesel)
     return Response(content=xml, media_type="application/xml")
 
+@app.get("/xml")
+async def pcc3_xml2() -> Response:
+    renderer = PccRenderer()
+    xml = renderer.xml2()
+    return Response(content=xml, media_type="application/xml")
+
 
 
 @app.get("/chat")

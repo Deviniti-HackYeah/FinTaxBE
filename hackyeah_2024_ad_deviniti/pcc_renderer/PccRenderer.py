@@ -41,3 +41,8 @@ class PccRenderer:
             xml_string = xml_string.replace("%%KOD_URZEDU", kod_urzedu)
             xml_string = xml_string.replace("%%PESEL", pesel)
         return xml_string
+
+    def xml2(self) -> str:
+        with open("data1.xml", "r", encoding="utf-8") as xml_file:
+            xml_string = xml_file.read()
+        return xml_string
