@@ -3,6 +3,7 @@ from typing import Any, Dict, Optional
 
 from pydantic import BaseModel
 
+from hackyeah_2024_ad_deviniti.domain.pcc_3_form import Pcc3Form
 from hackyeah_2024_ad_deviniti.domain.user_action import UserAction
 from hackyeah_2024_ad_deviniti.presentation.dto import TurnResponseFullDto
 
@@ -16,8 +17,10 @@ class ConversationTurn(BaseModel):
     full_response: TurnResponseFullDto
     requested_intent: Optional[str]
     stats: Dict[str, Any]
+    pcc_3_form: Pcc3Form
 
 
 class TurnResult(BaseModel):
     full_response: TurnResponseFullDto
     intent: Optional[str]
+    pcc_3_form: Pcc3Form

@@ -1,4 +1,3 @@
-import asyncio
 import datetime
 from typing import List
 
@@ -22,9 +21,9 @@ Twoim zadaniem jest zweryfikowanie czy jest to kontunowanie konwersacji
 
 class IsContinuousConversationChecker:
     async def call(
-        self,
-        previous_turns: List[ConversationTurn],
-        message: str = "Jak dojechać do Polski z Czech?",
+            self,
+            previous_turns: List[ConversationTurn],
+            message: str = "Jak dojechać do Polski z Czech?",
     ) -> IsContinuousConversationResult:
         llm = get_azure_gpt_4o()
         start = datetime.datetime.now()

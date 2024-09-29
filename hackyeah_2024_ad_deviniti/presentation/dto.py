@@ -65,10 +65,10 @@ class QuestionRequestDto(BaseModel):
 
 class TextResponses(BaseModel):
     agent_1: str
-    agent_2: str
+    agent_2: str = ""
 
 
 class TurnResponseFullDto(BaseModel):
     response: TextResponses
-    sources: List[QuestionSource]
-    extras: List[QuestionExtras]
+    sources: List[QuestionSource] = []
+    extras: List[QuestionExtras] = []

@@ -8,6 +8,7 @@ from hackyeah_2024_ad_deviniti.application.ai_processor.situation_verificator im
     SituationVerification,
 )
 from hackyeah_2024_ad_deviniti.application.ai_processor.yes_no_answer_exract import YesNoQuestionAnswerProcesor
+from hackyeah_2024_ad_deviniti.application.form_fill_process import call_for_fill
 from hackyeah_2024_ad_deviniti.application.intents import (
     ASK_FOR_FILL_PCC3,
     INCORRECT_SITUATION,
@@ -17,6 +18,7 @@ from hackyeah_2024_ad_deviniti.domain.conversation_turn import (
     ConversationTurn,
     TurnResult,
 )
+from hackyeah_2024_ad_deviniti.domain.pcc_3_form import Pcc3Form
 from hackyeah_2024_ad_deviniti.domain.user_action import UserAction
 from hackyeah_2024_ad_deviniti.infrastructure.database.repository import (
     ConversationTurnRepository,
@@ -47,6 +49,7 @@ class ConversationService:
             full_response=turn_result.full_response,
             requested_intent=turn_result.intent,
             stats={},
+            pcc_3_form=Pcc3Form()
         )
         self._conversation_repository.add_conversation_turn(turn)
         logger.info(f'requested intent {turn_result.intent}')
@@ -66,7 +69,8 @@ class ConversationService:
             return await self.process_situation_verification(action, history)
         elif last_intent == ASK_FOR_FILL_PCC3:
             return await self.process_ask_to_start(action)
-        raise Exception('Not implemented')
+        else:
+            return await call_for_fill(action, history)
 
     async def process_situation_verification(
             self, action: UserAction, history: List[ConversationTurn]
@@ -115,6 +119,7 @@ class ConversationService:
                 ),
             ),
             intent=intent,
+            pcc_3_form=Pcc3Form()
         )
 
     async def process_ask_to_start(
@@ -139,7 +144,6 @@ class ConversationService:
                 else ASK_FOR_FILL_PCC3
             )
         )
-
         return TurnResult(
             full_response=TurnResponseFullDto(
                 response=TextResponses(
@@ -150,6 +154,7 @@ class ConversationService:
                 extras=[]
             ),
             intent=intent,
+            pcc_3_form=Pcc3Form()
         )
 
     def get_history_turns(self, session_id: str) -> List[ConversationTurn]:

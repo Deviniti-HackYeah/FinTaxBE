@@ -15,10 +15,10 @@ class YesNoQuestionResponse(BaseModel):
     question_answer: str
 
     def is_yes(self) -> bool:
-        return self.question_answer.lower() == 'yes'
+        return self.question_answer.lower() == 'tak'
 
     def is_no(self) -> bool:
-        return self.question_answer.lower() == 'no'
+        return self.question_answer.lower() == 'nie'
 
     def is_other(self) -> bool:
         return not self.is_yes() and not self.is_no()
@@ -47,4 +47,5 @@ class YesNoQuestionAnswerProcesor:
         )
         end = datetime.datetime.now()
         logger.info(f"duration: {(end - start).total_seconds()}s")
+        logger.info(response)
         return response

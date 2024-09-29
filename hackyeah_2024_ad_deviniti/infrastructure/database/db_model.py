@@ -17,3 +17,4 @@ class ConversationTurnDB(DbBase):  # type: ignore
     full_response: Mapped[Dict[str, Any]] = mapped_column(JSON, nullable=False)
     requested_intent: Mapped[str] = mapped_column(String, nullable=True)
     stats: Mapped[Dict[str, Any]] = mapped_column(JSON, nullable=False)
+    pcc_3_form: Mapped[Dict[str, Any]] = mapped_column(JSON, nullable=False)
