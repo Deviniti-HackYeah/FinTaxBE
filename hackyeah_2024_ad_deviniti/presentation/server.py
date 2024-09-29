@@ -68,9 +68,9 @@ async def history(
 
 
 @app.get("/pcc3.html", response_class=HTMLResponse)
-async def pcc3_html(data: str, kod_urzedu: str, pesel: str) -> str:
+async def pcc3_html() -> str:
     renderer = PccRenderer()
-    return renderer.render(data, kod_urzedu, pesel)
+    return renderer.render2()
 
 
 @app.get("/pcc3.xml")

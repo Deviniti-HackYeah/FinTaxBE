@@ -34,6 +34,23 @@ class PccRenderer:
 
         return html
 
+    def render2(self) -> str:
+        xml_string = self.xml2()
+
+        # Parse the XML content
+        xml_doc = ET.XML(bytes(xml_string, encoding="utf-8"))
+
+        # Create an XSLT transform object
+        transform = ET.XSLT(self.xslt_doc)
+
+        # Apply the transformation
+        newdom = transform(xml_doc)
+
+        # Print the transformed XML
+        html = ET.tostring(newdom, pretty_print=True).decode("utf-8")
+
+        return html
+
     def xml(self, data: str, kod_urzedu: str, pesel: str) -> str:
         with open("data.xml", "r", encoding="utf-8") as xml_file:
             xml_string = xml_file.read()
