@@ -1,6 +1,7 @@
 from typing import Generator
 
-from sqlmodel import Session, SQLModel, create_engine
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
 
 from hackyeah_2024_ad_deviniti.config.config_models import get_db_config
 
@@ -14,7 +15,6 @@ engine = create_engine(
     pool_pre_ping=True,
     pool_use_lifo=True,
 )
-SQLModel.metadata.create_all(engine)
 
 
 def get_database_session() -> Generator[Session, None, None]:

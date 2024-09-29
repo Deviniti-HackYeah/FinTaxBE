@@ -9,16 +9,16 @@ class DialogStep(ABC):
 
     @abstractmethod
     def choose_this_step(
-            self, previous_turns: List[ConversationTurn], user_action: UserAction
+        self, previous_turns: List[ConversationTurn], user_action: UserAction
     ) -> bool:
         pass
 
     @abstractmethod
     async def process_step(
-            self,
-            user_action: UserAction,
-            conversation_id: str,
-            turn_id: str,
-            previous_turns: List[ConversationTurn],
+        self,
+        user_action: UserAction,
+        conversation_id: str,
+        turn_id: str,
+        previous_turns: List[ConversationTurn],
     ) -> ConversationTurn:
         pass

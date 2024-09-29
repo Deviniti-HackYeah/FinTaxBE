@@ -32,22 +32,22 @@ class LinkPayload(BaseModel):
 
 
 class QuestionExtrasDocument(BaseModel):
-    type: Literal['document']
+    type: Literal["document"]
     payload: DocumentPayload
 
 
 class QuestionExtrasImage(BaseModel):
-    type: Literal['image']
+    type: Literal["image"]
     payload: ImagePayload
 
 
 class QuestionExtrasQuote(BaseModel):
-    type: Literal['quote']
+    type: Literal["quote"]
     payload: QuotePayload
 
 
 class QuestionExtrasLink(BaseModel):
-    type: Literal['link']
+    type: Literal["link"]
     payload: LinkPayload
 
 
@@ -68,7 +68,7 @@ class TextResponses(BaseModel):
     agent_2: str
 
 
-class QuestionResponseDto(BaseModel):
+class TurnResponseFullDto(BaseModel):
     response: TextResponses
     sources: List[QuestionSource]
     extras: Optional[QuestionExtras]
